@@ -18,7 +18,7 @@ namespace negocio
         }
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server =.\\SQLEXPRESS; database = NebulaBBDD; integrated security=true");
+            conexion = new SqlConnection("server =.\\SQLEXPRESS; database = NEBULA; integrated security=true");
             comando = new SqlCommand();
         }
         public void setearConsulta(string consulta)

@@ -1,3 +1,4 @@
+DROP DATABASE NEBULA
 create database NEBULA
 go
 use NEBULA
@@ -73,14 +74,14 @@ VALUES ('Manga Corta')
 go
 
 --ARTICULO
-INSERT INTO Articulo(Nombre, Descripcion, Precio, Talle, Estado, IdCategoria)
-VALUES ('BAZINGA', 'Remera manga corta, roja con incripcion bbtg', 1000, 'S', 1, 2)
-INSERT INTO Articulo(Nombre, Descripcion, Precio, Talle, Estado, IdCategoria)
-VALUES ('NERD', 'Remera manga larga, azul y rojo', 800, 'M', 1, 1)
-INSERT INTO Articulo(Nombre, Descripcion, Precio, Talle, Estado, IdCategoria)
-VALUES ('STAR WARS', 'Remera manga corta, amarilla con bordado', 4000, 'M', 1, 2)
-INSERT INTO Articulo(Nombre, Descripcion, Precio, Talle, Estado, IdCategoria)
-VALUES ('DISNEY', 'Remera manga corta, rosa, importada', 4000, 'L', 1, 2)
+INSERT INTO Articulo(Nombre, Descripcion, Precio, UrlImagen, Talle, Estado, IdCategoria)
+VALUES ('BAZINGA', 'Remera manga corta, roja con incripcion.', 1000, 'https://http2.mlstatic.com/D_NQ_NP_977245-MLA44576080247_012021-O.webp', 'S', 1, 2)
+INSERT INTO Articulo(Nombre, Descripcion, Precio, UrlImagen, Talle, Estado, IdCategoria)
+VALUES ('EINSTEIN', 'Remera manga corta, amarilla con figura de Einstein.', 800, 'https://tse2.mm.bing.net/th?id=OIP.SR1Fwa0j0yVb6S3fO8XR0wHaHa&pid=Api', 'M', 1, 1)
+INSERT INTO Articulo(Nombre, Descripcion, Precio, UrlImagen, Talle, Estado, IdCategoria)
+VALUES ('STAR WARS', 'Remera manga corta, amarilla con bordado.', 4000, 'https://d26lpennugtm8s.cloudfront.net/stores/064/882/products/clasica2-ea8a431b2ba8eb128615132717760366-1024-1024.jpg', 'M', 1, 2)
+INSERT INTO Articulo(Nombre, Descripcion, Precio, UrlImagen, Talle, Estado, IdCategoria)
+VALUES ('DISNEY', 'Remera manga corta, rosa, importada.', 4000, 'https://tse1.mm.bing.net/th?id=OIP.m-ai2LtB0vDzUkPWY6M6dAHaJy&pid=Api', 'L', 1, 2)
 go
 
 
