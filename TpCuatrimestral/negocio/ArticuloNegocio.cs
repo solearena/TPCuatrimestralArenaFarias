@@ -17,36 +17,32 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("");//agregar consulta de bbdd
+                datos.setearConsulta("SELECT A.Id, A.Nombre, A.Descripcion, A.Precio, A.UrlImagen, A.Estado, C.IdCategoria, C.Descripcion FROM Articulo AS A INNER JOIN Categoria AS C ON C.Id = A.IdCategoria");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
-                    /*aux.Id = (int)datos.Lector["Id"];
-                    aux.CodigoArticulo = (string)datos.Lector["Codigo"];
+                    aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                    if (!(datos.Lector["UrlImagen"] is DBNull))
                     {
-                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                        aux.UrlImagen = (string)datos.Lector["UrlImagen"];
                     }
-                    aux.DescripcionMarca = new Marca();
-                    aux.DescripcionMarca.Id = (int)datos.Lector["Id"];
-                    aux.DescripcionMarca.Descripcion = (string)datos.Lector["Marca"];
+                    aux.Estado = (bool)datos.Lector["Estado"];
                     aux.DescripcionCategoria = new Categoria();
-                    aux.DescripcionCategoria.Id = (int)datos.Lector["Id"];
-                    aux.DescripcionCategoria.Descripcion = (string)datos.Lector["Categoria"];
-                    lista.Add(aux);*/
-
+                    aux.DescripcionCategoria.IdCategoria = (int)datos.Lector["Id"];
+                    aux.DescripcionCategoria.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.DescripcionCategoria = new Categoria();
+                    lista.Add(aux);
                 }
 
                 return lista;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally

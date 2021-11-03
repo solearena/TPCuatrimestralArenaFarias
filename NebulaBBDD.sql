@@ -48,3 +48,39 @@ create table Cliente(
 	IdDireccion int not null foreign key references Direccion(Id),
 	IdUsuario int not null foreign key references Usuario(Id)
 )
+go
+create table Venta(
+	Id bigint not null primary key identity(1,1),
+	Total money not null,
+	FechaCompra Date not null
+)
+go
+
+--FOP
+INSERT INTO FOP(Tipo)
+VALUES ('Efectivo')
+INSERT INTO FOP(Tipo)
+VALUES ('Mercado Pago')
+INSERT INTO FOP(Tipo)
+VALUES ('Transferencia Bancaria')
+go
+
+--CATEGORÍA
+INSERT INTO Categoria(Descripcion)
+VALUES ('Manga Larga')
+INSERT INTO Categoria(Descripcion)
+VALUES ('Manga Corta')
+go
+
+--ARTICULO
+INSERT INTO Articulo(Nombre, Descripcion, Precio, Talle, Estado, IdCategoria)
+VALUES ('BAZINGA', 'Remera manga corta, roja con incripcion bbtg', 1000, 'S', 1, 2)
+INSERT INTO Articulo(Nombre, Descripcion, Precio, Talle, Estado, IdCategoria)
+VALUES ('NERD', 'Remera manga larga, azul y rojo', 800, 'M', 1, 1)
+INSERT INTO Articulo(Nombre, Descripcion, Precio, Talle, Estado, IdCategoria)
+VALUES ('STAR WARS', 'Remera manga corta, amarilla con bordado', 4000, 'M', 1, 2)
+INSERT INTO Articulo(Nombre, Descripcion, Precio, Talle, Estado, IdCategoria)
+VALUES ('DISNEY', 'Remera manga corta, rosa, importada', 4000, 'L', 1, 2)
+go
+
+

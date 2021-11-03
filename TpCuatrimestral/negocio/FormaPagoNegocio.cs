@@ -17,36 +17,21 @@ namespace negocio
 
                 try
                 {
-                    datos.setearConsulta("");//agregar consulta de bbdd
+                    datos.setearConsulta("SELECT Id, Tipo FROM FOP");
                     datos.ejecutarLectura();
 
                     while (datos.Lector.Read())
                     {
                         FormaDePago aux = new FormaDePago();
-                        /*aux.Id = (int)datos.Lector["Id"];
-                        aux.CodigoArticulo = (string)datos.Lector["Codigo"];
-                        aux.Nombre = (string)datos.Lector["Nombre"];
-                        aux.Descripcion = (string)datos.Lector["Descripcion"];
-                        aux.Precio = (decimal)datos.Lector["Precio"];
-                        if (!(datos.Lector["ImagenUrl"] is DBNull))
-                        {
-                            aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-                        }
-                        aux.DescripcionMarca = new Marca();
-                        aux.DescripcionMarca.Id = (int)datos.Lector["Id"];
-                        aux.DescripcionMarca.Descripcion = (string)datos.Lector["Marca"];
-                        aux.DescripcionCategoria = new Categoria();
-                        aux.DescripcionCategoria.Id = (int)datos.Lector["Id"];
-                        aux.DescripcionCategoria.Descripcion = (string)datos.Lector["Categoria"];
-                        lista.Add(aux);*/
-
+                        aux.IdFP = (int)datos.Lector["Id"];
+                        aux.Tipo = (string)datos.Lector["Tipo"];
+                        lista.Add(aux);
                     }
 
                     return lista;
                 }
                 catch (Exception ex)
                 {
-
                     throw ex;
                 }
                 finally
