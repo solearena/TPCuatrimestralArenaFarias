@@ -14,6 +14,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><% = item.Nombre %></h5>
                         <p class="card-text"><%= item.Descripcion %></p>
+                        <a href="#" class ="btn btn-primary">COMPRAR</a>
                         
                     </div>
                 </div>

@@ -40,5 +40,12 @@
             </asp:ContentPlaceHolder>
         </div>
     </form>
+    <footer>
+    <div class="card-footer text-muted text-center">
+        Copyright © 2021 NEBULA</div>
+    
+<footer/>
 </body>
+    
+
 </html>
