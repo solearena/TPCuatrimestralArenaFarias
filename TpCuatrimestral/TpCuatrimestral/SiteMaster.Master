@@ -28,6 +28,9 @@
                         <a class="nav-link" href="../Contacto.aspx">CONTACTO</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="../Registrarse.aspx">REGISTRARSE</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../Login.aspx">LOGIN</a>
                     </li>
                 </ul>
@@ -41,10 +44,9 @@
         </div>
     </form>
     <footer>
-    <div class="card-footer text-muted text-center">
-        Copyright © 2021 NEBULA</div>
-    
-<footer/>
+        <div class="card-footer text-muted text-center">
+            Copyright © 2021 NEBULA</div>
+    </footer>
 </body>
     
 

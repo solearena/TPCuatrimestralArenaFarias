@@ -1,4 +1,3 @@
-DROP DATABASE NEBULA
 create database NEBULA
 go
 use NEBULA
