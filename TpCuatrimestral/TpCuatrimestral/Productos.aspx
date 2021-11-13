@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
 
-        <% foreach (dominio.Articulo item in listaArticulos )
+        <% foreach (dominio.Articulo item in listaArticulo )
             {%>
             <div class="col">
                 <div class="card" style="width: 18rem; border: solid 5px black">
@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><% = item.Nombre %></h5>
                         <p class="card-text"><%= item.Descripcion %></p>
-                        <a href="#" class ="btn btn-primary">COMPRAR</a>
+                        <a href="Productos.aspx?id=<%:item.Id%>" class ="btn btn-primary">COMPRAR</a>
                         
                     </div>
                 </div>
