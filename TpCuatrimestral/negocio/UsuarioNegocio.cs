@@ -10,6 +10,37 @@ namespace negocio
 {
     public class UsuarioNegocio
     {
+        public bool Loguear(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //ver de agregar tipo de usuario en la BD
+                datos.setearConsulta("Select Id,TipoUser from USUARIOS where NombreUsuario = @user and Contraseña = @pass ");
+                datos.setearParametro("@user",usuario.IdUsuario);
+                datos.setearParametro("@pass", usuario.Contrasenia);
+
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    usuario.IdUsuario = (int)datos.Lector["Id"];
+                    usuario.TipoUsuario = (int)(datos.Lector["TipoUser"]) == 2 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
+                    return true;
+                }
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
         public List<Usuario> listar()
         {
             List<Usuario> lista = new List<Usuario>();
