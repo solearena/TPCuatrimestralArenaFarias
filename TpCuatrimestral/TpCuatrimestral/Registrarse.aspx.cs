@@ -16,7 +16,9 @@ namespace TpCuatrimestral
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
         }
     }
 }

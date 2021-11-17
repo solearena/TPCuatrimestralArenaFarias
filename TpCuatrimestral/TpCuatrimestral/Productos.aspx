@@ -1,8 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Productos.aspx.cs" Inherits="TpCuatrimestral.Productos" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>NEBULA</h1>
-    <p>PRODUCTOS</p>
+    <div  class="d-flex justify-content-center">
+        <h1 class="text-dark" style="font-size:120px; font-family:'Goudy Old Style' ">NEBULA</h1>
+    </div>
     <div class="container">
         <div class="row">
 

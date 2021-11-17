@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Contacto.aspx.cs" Inherits="TpCuatrimestral.Contacto" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- 
+    <div  class="d-flex justify-content-center">
+        <h1 class="text-dark" style="font-size:120px; font-family:'Goudy Old Style' ">NEBULA</h1>
+    </div>
     <div class="container">
       <div class="row">
         <div class="col">
@@ -10,12 +12,15 @@
         </div>
         <div class="col-md-6">
             <h1>Contactanos</h1>
-            <ul class="contact-info list-unstyled">
-                <li class="m-bottom"><strong>11-3028-9090</strong>
-                </li>
-                <li class="m-bottom"><strong>nebula@gmail.com</strong></li>
-                <li class="m-bottom"><strong>Cramer 345, CABA</strong></li>
-          </ul>
+            <address>
+                <strong>Telefono: </strong>11-3028-9090
+            </address>
+            <address>
+                <strong>Dirección: </strong>Cramer 345, CABA
+            </address>
+          <address>
+              <strong>Email:</strong>   <a href="mailto:nebula@gmail.com">nebula@gmail.com</a><br />
+          </address>
         </div>
       </div>
     </div>

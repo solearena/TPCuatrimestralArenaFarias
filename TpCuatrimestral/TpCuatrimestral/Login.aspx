@@ -1,13 +1,20 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TpCuatrimestral.Login" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="mb-3">
-    <label for="inputEmail4" class="form-label">Usuario</label>
-    <asp:TextBox runat="server" cssclass="form-control" ID="txtUsuario"/>
-  </div>
-  <div class="mb-3">
-    <label for="inputPassword4" class="form-label">CONTRASEÑA</label>
-    <asp:TextBox runat="server" cssclass="form-control" ID="txtContraseña"/>
-  </div>
-  <asp:Button ID="Button2"  cssclass="btn btn-danger" runat="server" Text="INGRESAR" OnClick="Button2_Click"/>
+    <br />
+    <div class="row">
+ 
+          <div class="mb-3">
+                <asp:Label ID="Label1" runat="server" Text="Label">Usuario</asp:Label>
+                <asp:TextBox ID="TxtUsuario" runat="server"></asp:TextBox>
+          </div>
+          <div class="mb-3">
+              <asp:Label ID="Label2" runat="server" Text="Label">Contraseña</asp:Label>
+              <asp:TextBox ID="TxtContrasenia" runat="server"></asp:TextBox>
+          </div>
+        <div class="col-12">
+            <asp:Button ID="Button1" runat="server" Text="Ingresar" cssclass="btn btn-danger" />
+        </div>
+
+          </div>
 </asp:Content>

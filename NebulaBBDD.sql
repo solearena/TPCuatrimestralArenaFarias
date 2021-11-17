@@ -76,11 +76,15 @@ go
 INSERT INTO Articulo(Nombre, Descripcion, Precio, UrlImagen, Talle, Estado, IdCategoria)
 VALUES ('BAZINGA', 'Remera manga corta, roja con incripcion.', 1000, 'https://http2.mlstatic.com/D_NQ_NP_977245-MLA44576080247_012021-O.webp', 'S', 1, 2)
 INSERT INTO Articulo(Nombre, Descripcion, Precio, UrlImagen, Talle, Estado, IdCategoria)
-VALUES ('EINSTEIN', 'Remera manga corta, amarilla con figura de Einstein.', 800, 'https://tse2.mm.bing.net/th?id=OIP.SR1Fwa0j0yVb6S3fO8XR0wHaHa&pid=Api', 'M', 1, 1)
+VALUES ('E=mc2', 'Remera manga corta, gris.', 800, 'https://http2.mlstatic.com/D_NQ_NP_744744-MLA47909475438_102021-W.webp', 'M', 1, 1)
 INSERT INTO Articulo(Nombre, Descripcion, Precio, UrlImagen, Talle, Estado, IdCategoria)
-VALUES ('STAR WARS', 'Remera manga corta, amarilla con bordado.', 4000, 'https://d26lpennugtm8s.cloudfront.net/stores/064/882/products/clasica2-ea8a431b2ba8eb128615132717760366-1024-1024.jpg', 'M', 1, 2)
+VALUES ('STAR WARS', 'Remera manga corta, negra con bordado.', 4000, 'https://d26lpennugtm8s.cloudfront.net/stores/064/882/products/clasica2-ea8a431b2ba8eb128615132717760366-1024-1024.jpg', 'M', 1, 2)
 INSERT INTO Articulo(Nombre, Descripcion, Precio, UrlImagen, Talle, Estado, IdCategoria)
-VALUES ('DISNEY', 'Remera manga corta, rosa, importada.', 4000, 'https://tse1.mm.bing.net/th?id=OIP.m-ai2LtB0vDzUkPWY6M6dAHaJy&pid=Api', 'L', 1, 2)
+VALUES ('MICKEY', 'Remera manga corta, negra de Mickey Mouse.', 4000, 'https://e7.pngegg.com/pngimages/386/738/png-clipart-t-shirt-mickey-mouse-minnie-mouse-baby-toddler-one-pieces-t-shirt-tshirt-smiley.png', 'L', 1, 2)
+INSERT INTO Articulo(Nombre, Descripcion, Precio, UrlImagen, Talle, Estado, IdCategoria)
+VALUES ('FLOPPY DISK', 'Remera manga corta, negra, "I am your father".', 3500, 'https://i.pinimg.com/564x/38/95/29/3895293082cb57a9d269cb7bf2836f01.jpg', 'L', 1, 2)
+INSERT INTO Articulo(Nombre, Descripcion, Precio, UrlImagen, Talle, Estado, IdCategoria)
+VALUES ('HONGO', 'Remera manga corta, negra.', 3600, 'https://i.pinimg.com/564x/a0/00/87/a00087c2dca3cf40d7fd137fbe62bbcb.jpg', 'L', 1, 2)
 go
 
 

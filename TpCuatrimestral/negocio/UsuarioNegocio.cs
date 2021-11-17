@@ -53,8 +53,8 @@ namespace negocio
 
                 while (datos.Lector.Read())
                 {
-                    Usuario aux = new Usuario();
-                    /*aux.Id = (int)datos.Lector["Id"];
+                    /*Usuario aux = new Usuario();
+                    aux.Id = (int)datos.Lector["Id"];
                     aux.CodigoArticulo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
