@@ -18,7 +18,8 @@ go
 create table Usuario(
 	Id int not null primary key identity(1,1),
 	NombreUsuario varchar(100) not null unique,
-	Contraseña varchar(10) not null 
+	Contraseña varchar(10) not null, 
+	TipoUsuario int not null check(TipoUsuario between 1 and 2)
 )
 go
 create table Categoria(
@@ -32,9 +33,15 @@ create table Articulo (
 	Descripcion varchar(200) null,
 	Precio decimal(10,2),
 	UrlImagen varchar(300),
-	Talle varchar(3) not null,
 	Estado bit not null,
 	IdCategoria int not null foreign key references Categoria(Id)
+)
+go
+create table Stock(
+	Id int not null primary key identity(1,1),
+	IdArticulo int not null foreign key references Articulo(Id),
+	StockArticulo int not null,
+	Talle varchar(3) not null 
 )
 go
 create table Cliente(

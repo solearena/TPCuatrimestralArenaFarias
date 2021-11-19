@@ -13,22 +13,21 @@
             var valido = true;
 
             if (email === "") {
-                alert("Debes completar los campos");
-                //$("#<% = txtEmail.ClientID %>").removeClass("is-valid");
-                //$("#<% = txtEmail.ClientID %>").addClass("is-invalid");
+                alert("Email no Ingresado");
+                $("#<% = txtEmail.ClientID %>").removeClass("is-valid");
+                $("#<% = txtEmail.ClientID %>").addClass("is-invalid");
                 valido = false;
             }
             else {
                 alert("Bienvenido a NEBULA!");
-                //$("#<% = txtEmail.ClientID %>").removeClass("is-valid");
-                //$("#<% = txtEmail.ClientID %>").addClass("is-invalid");
+                $("#<% = txtEmail.ClientID %>").removeClass("is-valid");
+                $("#<% = txtEmail.ClientID %>").addClass("is-invalid");
             }
             if (!valido) {
                 return false;
             }
             return true;
         }
-
     </script>
     
         <div class="row">
@@ -37,7 +36,6 @@
               <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">Email</label>
                     <asp:TextBox runat="server" cssclass="form-control" ID="txtEmail" ClientIDMode="Static"/>
-                  <asp:RangeValidator ErrorMessage="El valor es incorrecto" ControlToValidate="txtEmail" runat="server" />
               </div>
               <div class="col-md-6">
                     <label for="inputPassword4" class="form-label">Password</label>
