@@ -16,15 +16,15 @@ namespace negocio
             try
             {
                 //ver de agregar tipo de usuario en la BD
-                datos.setearConsulta("Select Id,TipoUser from USUARIOS where NombreUsuario = @user and Contraseña = @pass ");
-                datos.setearParametro("@user",usuario.IdUsuario);
+                datos.setearConsulta("Select Id, TipoUsuario from Usuario where NombreUsuario = @user and Contraseña = @pass ");
+                datos.setearParametro("@user",usuario.NombreUsuario);
                 datos.setearParametro("@pass", usuario.Contrasenia);
 
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
-                    usuario.IdUsuario = (int)datos.Lector["Id"];
-                    usuario.TipoUsuario = (int)(datos.Lector["TipoUser"]) == 2 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
+                    usuario.IdUsuario = (int)datos.Lector["IdUsuario"];
+                    usuario.TipoUsuario = (int)(datos.Lector["TipoUsuario"]) == 2 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
                     return true;
                 }
                 return false;
