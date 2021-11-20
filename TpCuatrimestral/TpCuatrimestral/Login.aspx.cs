@@ -28,13 +28,15 @@ namespace TpCuatrimestral
                 if (negocio.Loguear(usuario))
                 {
                     Session.Add("usuario", usuario);
-                    Response.Redirect("Login.aspx");
+                    Response.Redirect("Pagina2LoginAdmin.aspx", false);
+                    Context.ApplicationInstance.CompleteRequest();
 
                 }
                 else
                 {
                     Session.Add("error", "user o pass incorrectos");
-                    Response.Redirect("Error.aspx");
+                    Response.Redirect("Error.aspx", false);
+                    Context.ApplicationInstance.CompleteRequest();
                 }
 
             }
