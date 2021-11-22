@@ -41,6 +41,8 @@ namespace negocio
             }
 
         }
+
+   
         public List<Usuario> listar()
         {
             List<Usuario> lista = new List<Usuario>();
@@ -74,6 +76,30 @@ namespace negocio
                 }
 
                 return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void agregar(Usuario aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("Insert Into Usuario(NombreUsuario, Contraseña,TipoUsuario) Values(@NOMBREUSUARIO, @CONTRASEÑA,@TIPOUSUARIO)");
+                datos.setearParametro("@NOMBREUSUARIO",aux.NombreUsuario);
+                datos.setearParametro("@CONTRASEÑA",aux.Contrasenia);
+                datos.setearParametro("@TIPOUSUARIO", 1);
+
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

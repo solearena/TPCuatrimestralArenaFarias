@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using negocio;
+using dominio;
 
 namespace TpCuatrimestral
 {
@@ -17,5 +19,11 @@ namespace TpCuatrimestral
                 Response.Redirect("Error.aspx", false);
             }
         }
-    }
+
+        protected void btnDesloguear_Click(object sender, EventArgs e)
+        {
+            Session.Remove("usuario");
+            Response.Redirect("Default.aspx"); //No redirecciona a Default va a la pag Intermediaria
+        }
+    } 
 }

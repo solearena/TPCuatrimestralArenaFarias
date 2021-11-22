@@ -7,7 +7,7 @@
             <h1>Esa!</h1>
             <p>Tenés perfil admin, sino no podrías estar acá.</p>
             <p>
-                <a href="MenuLogin.aspx" class="btn btn-primary">Regresar</a>
+                <a href="MenuLogin.aspx" id="btnDesloguear" class="btn btn-primary" runat="server" onclick="btnDesloguear_Click">Desloguear</a>
         </div>
     </div>
 </asp:Content>

@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace presentacion_web.EjemplosLogin
+namespace TpCuatrimestral
 {
 
 
-    public partial class MenuLogin1Ejemplo
+    public partial class MenuLogin
     {
 
         /// <summary>

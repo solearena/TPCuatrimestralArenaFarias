@@ -23,26 +23,41 @@ namespace negocio
                 while (datos.Lector.Read())
                 {
                     Direccion aux = new Direccion();
-                    /*aux.Id = (int)datos.Lector["Id"];
-                    aux.CodigoArticulo = (string)datos.Lector["Codigo"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
-                    {
-                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-                    }
-                    aux.DescripcionMarca = new Marca();
-                    aux.DescripcionMarca.Id = (int)datos.Lector["Id"];
-                    aux.DescripcionMarca.Descripcion = (string)datos.Lector["Marca"];
-                    aux.DescripcionCategoria = new Categoria();
-                    aux.DescripcionCategoria.Id = (int)datos.Lector["Id"];
-                    aux.DescripcionCategoria.Descripcion = (string)datos.Lector["Categoria"];
-                    lista.Add(aux);*/
+                    aux.IdDireccion = (int)datos.Lector["Id"];
+                    aux.CalleNum = (string)datos.Lector["Calle"];
+                    aux.CodPostal = (string)datos.Lector["CodigoPostal"];
+                    aux.Provincia = (string)datos.Lector["Provincia"];
+                    aux.Pais = (string)datos.Lector["Pais"];
+
+                    lista.Add(aux);
 
                 }
 
                 return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void agregar(Direccion aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Insert Into Direccion(CALLENUM, CODIGOPOSTAL, PROVINCIA, PAIS) Values(@CALLE, @CODIGOPOSTAL, @PROVINCIA, @PAIS)");
+                datos.setearParametro("@CALLE", aux.CalleNum);
+                datos.setearParametro("@CODIGOPOSTAL", aux.CodPostal);
+                datos.setearParametro("@PROVINCIA", aux.Provincia);
+                datos.setearParametro("@PAIS", aux.Pais);
+
+                datos.ejecutarAccion();
+
             }
             catch (Exception ex)
             {

@@ -98,6 +98,12 @@ go
 INSERT INTO Usuario(TipoUsuario, NombreUsuario, Contraseña)
 VALUES(2, 'solear', '1234')
 go
+INSERT INTO Direccion(CalleNum,CodigoPostal,Provincia,Pais)
+VALUES('Parana 3250','1636','Buenos Aires','Argentina')
+go
+set Dateformat 'dmy'
+INSERT INTO Cliente(Nombre,Apellido,Dni,FechaNac,Celular,Email,IdDireccion,IdUsuario)
+VALUES('Maria Soledad','Arena','31205206','20/08/1984','1165666037','solearena@gmail.com',1,1)
 
 --STOCK
 INSERT INTO Stock(IdArticulo, StockArticulo, Talle)
