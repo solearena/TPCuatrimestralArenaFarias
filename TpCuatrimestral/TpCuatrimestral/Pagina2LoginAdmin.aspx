@@ -2,12 +2,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <asp:GridView ID="dgvArticulos" runat="server" CssClass="table" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvArticulos_SelectedIndexChanged">
+        <Columns>
+            <asp:BoundField DataField="Nombre" HeaderText="Nombre Producto" />
+            <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
+            <asp:BoundField DataField="Precio" HeaderText="Precio" />
+            <asp:BoundField DataField="UrlImagen" HeaderText="Imagen" />
+            <asp:BoundField DataField="Estado" HeaderText="Activo(1)/Inactivo(0)" />
+            <asp:BoundField DataField="DescripcionCategoria" HeaderText="Categoría" />
+        </Columns>
+    </asp:GridView>
     <div class="row">
         <div class="col">
-            <h1>Esa!</h1>
-            <p>Tenés perfil admin, sino no podrías estar acá.</p>
-            <p>
-                <a href="MenuLogin.aspx" id="btnDesloguear" class="btn btn-primary" runat="server" onclick="btnDesloguear_Click">Desloguear</a>
+            <asp:Button runat="server" Text="Agregar"  cssclass="btn btn-danger" ID="btnAgregar" OnClick="btnAgregar_Click"/>
+            <a href="Default.aspx" id="btnDesloguear" class="btn btn-danger" runat="server" onclick="btnDesloguear_Click">Desloguear</a>
         </div>
     </div>
 </asp:Content>
