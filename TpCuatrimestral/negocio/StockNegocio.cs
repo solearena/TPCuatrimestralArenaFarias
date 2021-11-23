@@ -40,5 +40,26 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        
+        public void agregar(Stock aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO Stock(IdArticulo, StockArticulo, Talle) VALUES ((Select Id From Articulo WHERE Id = (Select max(Id) From Articulo)), @StockArticulo, @Talle)");
+                datos.setearParametro("@StockArticulo", aux.StockArticulo);
+                datos.setearParametro("@Talle", aux.Talle);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
