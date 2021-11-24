@@ -3,5 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>HUBO UN PROBLEMA</h1>
+    <asp:Image ID="imgAlert" runat="server" ImageUrl="~/Content/Img/advertencia.png" />
     <asp:Label Text="text" ID="lblMensaje" runat="server" /> 
 </asp:Content>

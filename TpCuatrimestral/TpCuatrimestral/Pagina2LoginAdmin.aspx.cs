@@ -16,10 +16,17 @@ namespace TpCuatrimestral
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!(Session["usuario"] != null && ((dominio.Usuario)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN))
+            if (Session["usuario"] == null)
             {
-                Session.Add("error", "No tienes permisos para ingresar a esta pantalla. Necesitas nivel admin.");
+                Session.Add("error", "No tienes permisos para ingresar a esta pantalla.");
                 Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                if ((((dominio.Usuario)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.NORMAL))
+                {
+                    Response.Redirect("Pagina1Login.aspx", false);
+                }
             }
             try
             {
@@ -48,6 +55,31 @@ namespace TpCuatrimestral
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             Response.Redirect("AgregarProducto.aspx");
+        }
+
+        protected void imgTacho_Click(object sender, ImageClickEventArgs e)
+        {
+            Articulo articulo = new Articulo();
+            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+            Page.Validate();
+            if (!Page.IsValid)
+            {
+                return;
+            }
+            else
+            {
+                try
+                {
+                    articulo.Id = Convert.ToInt32(dgvArticulos.DataKeys[e.X].Values[0]);
+                    articuloNegocio.eliminar(articulo);
+                    Response.Redirect("Pagina2LoginAdmin.aspx");
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
         }
     } 
 }

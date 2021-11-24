@@ -33,7 +33,8 @@ namespace negocio
                     }
                     aux.Estado = (bool)datos.Lector["Estado"];
                     aux.DescripcionCategoria = new Categoria();
-                    aux.DescripcionCategoria.IdCategoria = (int)datos.Lector["IdCategoria"];
+                    aux.IdCategoria = new Categoria();
+                    aux.IdCategoria.Id= (int)datos.Lector["IdCategoria"];
                     aux.DescripcionCategoria.Descripcion = (string)datos.Lector["Categoria"];
                     lista.Add(aux);
                 }
@@ -60,7 +61,7 @@ namespace negocio
                 datos.setearParametro("@Precio", articulo.Precio);
                 datos.setearParametro("@UrlImagen", articulo.UrlImagen);
                 datos.setearParametro("@Estado", 1);
-                datos.setearParametro("@IdCategoria", articulo.DescripcionCategoria.Descripcion);
+                datos.setearParametro("@IdCategoria", articulo.IdCategoria.Id);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -72,6 +73,68 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public void modificar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE Articulo SET Nombre = @Nombre, Descripcion = @Descripcion, Precio = @Precio, UrlImagen = @UrlImagen, Estado = @Estado, IdCategoria = @IdCategoria WHERE Id = @Id");
+                datos.setearParametro("@Nombre", articulo.Nombre);
+                datos.setearParametro("@Descripcion", articulo.Descripcion);
+                datos.setearParametro("@Precio", articulo.Precio);
+                datos.setearParametro("@UrlImagen", articulo.UrlImagen);
+                datos.setearParametro("@Estado", articulo.Estado);
+                datos.setearParametro("@IdCategoria", articulo.IdCategoria.Id);
+                datos.setearParametro("@Id", articulo.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void eliminar(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM Articulo WHERE Id = @Id");
+                datos.setearParametro("@Id", articulo.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void bajaLogica(Articulo articulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE Articulo SET Estado = @Estado WHERE Id = @Id");
+                datos.setearParametro("@Estado", 0);
+                datos.setearParametro("@Id", articulo.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

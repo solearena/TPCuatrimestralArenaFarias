@@ -48,6 +48,7 @@ namespace TpCuatrimestral
                 ArticuloNegocio artnegocio = new ArticuloNegocio();
                 Stock stock = new Stock();
                 StockNegocio stocknegocio = new StockNegocio();
+                articulo.IdCategoria = new Categoria();
                 try
                 {
                     articulo.Nombre = txtNombre.Text;
@@ -56,16 +57,17 @@ namespace TpCuatrimestral
                     articulo.UrlImagen = txtUrlImagen.Text;
                     if (listaCategoria.SelectedValue == "Manga Larga")
                     {
-                        articulo.DescripcionCategoria.IdCategoria = 1;
+                        articulo.IdCategoria.Id = 1;
                     }
                     if(listaCategoria.SelectedValue == "Manga Corta")
                     {
-                        articulo.DescripcionCategoria.IdCategoria = 2;
+                        articulo.IdCategoria.Id = 2;
                     }
                     artnegocio.agregar(articulo);
                     stock.StockArticulo = int.Parse(txtStock.Text);
                     stock.Talle = listaTalles.SelectedValue;
                     stocknegocio.agregar(stock);
+                    Response.Redirect("Pagina2LoginAdmin.aspx");
 
                 }
                 catch (Exception ex)

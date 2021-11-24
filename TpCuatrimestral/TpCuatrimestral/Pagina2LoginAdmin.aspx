@@ -11,6 +11,12 @@
             <asp:BoundField DataField="UrlImagen" HeaderText="Imagen" />
             <asp:BoundField DataField="Estado" HeaderText="Activo(1)/Inactivo(0)" />
             <asp:BoundField DataField="DescripcionCategoria" HeaderText="Categoría" />
+            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="150px">
+                <ItemTemplate>
+                    <asp:Button ID="btnModificar" runat="server" Text="Modificar" />
+                    <asp:ImageButton ID="imgTacho" runat="server" ImageUrl="~/Content/Img/bote-de-basura.png" OnClick="imgTacho_Click" />
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
     <div class="row">

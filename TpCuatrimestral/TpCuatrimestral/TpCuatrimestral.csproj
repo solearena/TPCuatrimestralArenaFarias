@@ -86,6 +86,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Img\bote-de-basura.png" />
+    <Content Include="Content\Img\carrito-de-compras.png" />
     <Content Include="Error.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
@@ -239,6 +241,7 @@
       <Name>negocio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

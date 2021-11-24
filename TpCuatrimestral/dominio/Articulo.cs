@@ -19,5 +19,6 @@ namespace dominio
         public bool Estado { get; set; }
         [DisplayName("Categoría")]
         public Categoria DescripcionCategoria { get; set; }
-    }
+        public Categoria IdCategoria{ get; set; }
+}
 }
