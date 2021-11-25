@@ -16,6 +16,11 @@ namespace TpCuatrimestral
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid)
+            {
+                return;
+            }
             if (Session["usuario"] == null)
             {
                 Session.Add("error", "No tienes permisos para ingresar a esta pantalla.");
@@ -50,6 +55,7 @@ namespace TpCuatrimestral
         protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = e.ToString();
+            
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -59,26 +65,44 @@ namespace TpCuatrimestral
 
         protected void imgTacho_Click(object sender, ImageClickEventArgs e)
         {
-            Articulo articulo = new Articulo();
-            ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-            Page.Validate();
-            if (!Page.IsValid)
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                ImageButton button = sender as ImageButton;
+                Articulo articulo = new Articulo();
+            try
             {
-                return;
-            }
-            else
-            {
-                try
-                {
-                    articulo.Id = Convert.ToInt32(dgvArticulos.DataKeys[e.X].Values[0]);
-                    articuloNegocio.eliminar(articulo);
-                    Response.Redirect("Pagina2LoginAdmin.aspx");
-                }
-                catch (Exception ex)
-                {
+                articulo.Id = Convert.ToInt32(button.CommandArgument);
 
-                    throw ex;
-                }
+                negocio.bajaLogica(articulo);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        protected void dgvArticulos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            
+        }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                Articulo articulo = new Articulo();
+                Button boton = sender as Button;
+            try
+            {
+                articulo.Id = Convert.ToInt32(boton.CommandArgument);
+                Response.Redirect("Modificar.aspx?IdOtro = " + articulo.Id,false);
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     } 

@@ -92,6 +92,7 @@
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MenuLogin.aspx" />
+    <Content Include="Modificar.aspx" />
     <Content Include="Pagina1Login.aspx" />
     <Content Include="Pagina2LoginAdmin.aspx" />
     <Content Include="Productos.aspx" />
@@ -154,6 +155,13 @@
     </Compile>
     <Compile Include="MenuLogin.aspx.designer.cs">
       <DependentUpon>MenuLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modificar.aspx.cs">
+      <DependentUpon>Modificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modificar.aspx.designer.cs">
+      <DependentUpon>Modificar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pagina1Login.aspx.cs">
       <DependentUpon>Pagina1Login.aspx</DependentUpon>

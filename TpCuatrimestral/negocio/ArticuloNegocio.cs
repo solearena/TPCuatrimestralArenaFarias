@@ -17,7 +17,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT A.Id, A.Nombre, A.Descripcion, A.Precio, A.UrlImagen, A.Estado, C.Id AS IdCategoria, C.Descripcion AS Categoria FROM Articulo AS A INNER JOIN Categoria AS C ON C.Id = A.IdCategoria");
+                datos.setearConsulta("SELECT A.Id, A.Nombre, A.Descripcion, A.Precio, A.UrlImagen, A.Estado, C.Id AS IdCategoria, C.Descripcion AS Categoria FROM Articulo AS A INNER JOIN Categoria AS C ON C.Id = A.IdCategoria where A.Estado=1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -122,8 +122,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Articulo SET Estado = @Estado WHERE Id = @Id");
-                datos.setearParametro("@Estado", 0);
+                datos.setearConsulta("UPDATE Articulo SET Estado = 0 WHERE Id = @Id");
                 datos.setearParametro("@Id", articulo.Id);
                 datos.ejecutarAccion();
             }
