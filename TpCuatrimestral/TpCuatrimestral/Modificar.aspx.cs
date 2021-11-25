@@ -28,8 +28,8 @@ namespace TpCuatrimestral
                 {
                     i++;
                 }
-                articulo.Nombre = listaArticulo[i].Nombre;
                 articulo.Precio = listaArticulo[i].Precio;
+                articulo.Nombre = listaArticulo[i].Nombre;
                 articulo.Descripcion = listaArticulo[i].Descripcion;
                 articulo.UrlImagen = listaArticulo[i].UrlImagen;
                 articulo.DescripcionCategoria.Descripcion = listaArticulo[i].DescripcionCategoria.Descripcion;
@@ -45,25 +45,38 @@ namespace TpCuatrimestral
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             Articulo articulo = new Articulo();
-
-            try
+            Page.Validate();
+            if (!Page.IsValid)
             {
-                Session(Request.QueryString["IdOtro"]);
-                if(Id != 0)
-                {
-                    Cargar((Id));
-
-                }
-                else
-                {
-                    return;
-                }
-                
+                return;
             }
-            catch (Exception ex)
+            if (Session["usuario"] == null)
             {
+                Session.Add("error", "No tienes permisos para ingresar a esta pantalla.");
+                Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                try
+                {
 
-                throw ex;
+                    int Id = Convert.ToInt32(this.Request.QueryString.Get(0));
+                    if (Id != 0)
+                    {
+                        Cargar(Id);
+                    }
+                    else
+                    {
+                        return;
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+
             }
         }
     }

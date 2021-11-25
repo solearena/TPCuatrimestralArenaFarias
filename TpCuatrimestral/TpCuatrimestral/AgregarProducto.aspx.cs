@@ -13,20 +13,31 @@ namespace TpCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CategoriaNegocio categoria = new CategoriaNegocio();
-            try
+            Page.Validate();
+            if (!Page.IsValid)
             {
-                if (!IsPostBack)
-                {
-                    listaCategoria.DataSource = categoria.listar();
-                    listaCategoria.DataBind();
-
-                }
+                return;
             }
-            catch (Exception ex)
+            if (Session["usuario"] == null)
             {
-
-                Session.Add("ERROR!", ex);
+                Session.Add("error", "No tienes permisos para ingresar a esta pantalla.");
+                Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                CategoriaNegocio categoria = new CategoriaNegocio();
+                try
+                {
+                    if (!IsPostBack)
+                    {
+                        listaCategoria.DataSource = categoria.listar();
+                        listaCategoria.DataBind();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Session.Add("ERROR!", ex);
+                }
             }
         }
 

@@ -94,10 +94,7 @@ namespace TpCuatrimestral
             try
             {
                 articulo.Id = Convert.ToInt32(boton.CommandArgument);
-                Response.Redirect("Modificar.aspx?IdOtro = " + articulo.Id,false);
-
-
-
+                Response.Redirect("Modificar.aspx?IdOtro=" + articulo.Id,false);
             }
             catch (Exception ex)
             {
