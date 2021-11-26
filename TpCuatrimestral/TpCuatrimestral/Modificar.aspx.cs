@@ -19,12 +19,12 @@ namespace TpCuatrimestral
         private void Cargar(int id)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            
+
             try
             {
                 listaArticulo = negocio.listar();
                 int i = 0;
-                while(id != listaArticulo[i].Id)
+                while (id != listaArticulo[i].Id)
                 {
                     i++;
                 }
@@ -33,7 +33,7 @@ namespace TpCuatrimestral
                 articulo.Nombre = listaArticulo[i].Nombre;
                 articulo.Descripcion = listaArticulo[i].Descripcion;
                 articulo.UrlImagen = listaArticulo[i].UrlImagen;
-                articulo.DescripcionCategoria= (Categoria)listaArticulo[i].DescripcionCategoria;
+                articulo.DescripcionCategoria = (Categoria)listaArticulo[i].DescripcionCategoria;
                 articulo.IdCategoria = (Categoria)listaArticulo[i].IdCategoria;
 
                 i = 0;
@@ -105,7 +105,25 @@ namespace TpCuatrimestral
 
         protected void dgvArticulo_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            dgvArticulo.EditIndex = e.NewEditIndex;
+            dgvArticulo.DataBind();
+        }
 
+        protected void dgvArticulo_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo articulo = new Articulo();
+
+            //ver como hacer para actualizar sin usar la lista o agregando metodo
+
+            negocio.modificar(articulo);
+
+        }
+
+        protected void dgvArticulo_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            dgvArticulo.EditIndex = -1;
+            dgvArticulo.DataBind();
         }
     }
 }
