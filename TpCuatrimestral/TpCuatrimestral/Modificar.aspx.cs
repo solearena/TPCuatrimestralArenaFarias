@@ -28,11 +28,14 @@ namespace TpCuatrimestral
                 {
                     i++;
                 }
+                articulo.Id = listaArticulo[i].Id;
                 articulo.Precio = listaArticulo[i].Precio;
                 articulo.Nombre = listaArticulo[i].Nombre;
                 articulo.Descripcion = listaArticulo[i].Descripcion;
                 articulo.UrlImagen = listaArticulo[i].UrlImagen;
                 articulo.DescripcionCategoria= (Categoria)listaArticulo[i].DescripcionCategoria;
+                articulo.IdCategoria = (Categoria)listaArticulo[i].IdCategoria;
+
                 i = 0;
             }
             catch (Exception ex)
@@ -70,7 +73,9 @@ namespace TpCuatrimestral
                         this.articulo = articulo;
                         Cargar(Id);
                         int idart = articulo.Id; //ver porque queda null
-                        dgvArticulo.DataSource = articulo;
+                        List<Articulo> lista = new List<Articulo>();
+                        lista.Add(articulo);
+                        dgvArticulo.DataSource = lista;
                         dgvArticulo.DataBind();
                     }
                     else
@@ -91,6 +96,16 @@ namespace TpCuatrimestral
         protected void dgvArticulo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = e.ToString();
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Pagina2LoginAdmin.aspx");
+        }
+
+        protected void dgvArticulo_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
         }
     }
 }
