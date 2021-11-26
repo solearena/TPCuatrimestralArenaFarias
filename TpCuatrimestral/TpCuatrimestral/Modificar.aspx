@@ -11,7 +11,7 @@
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
                 <asp:BoundField DataField="Precio" HeaderText="Precio" />
                 <asp:BoundField DataField="UrlImagen" HeaderText="Imagen" />
-                <asp:BoundField DataField="DescripcionCategoria" HeaderText="Categoría" />
+                
 
                 
             </Columns>        
@@ -25,7 +25,13 @@
             <SortedDescendingCellStyle BackColor="#D8D8F0" />
             <SortedDescendingHeaderStyle BackColor="#3E3277" />
         </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+        <asp:DropDownList ID="listaCategoria" CssClass="btn btn-outline-dark dropdown-toggle" runat="server"></asp:DropDownList>
+        <asp:TextBox ID="Stock" runat="server" Text="Stock" Height="39px" Width="57px"></asp:TextBox>
+        <asp:DropDownList ID="listaTalles" CssClass="btn btn-outline-dark dropdown-toggle" runat="server">
+                    <asp:ListItem Text="S" />
+                    <asp:ListItem Text="M" />
+                    <asp:ListItem Text="L" />
+                </asp:DropDownList>
             <div class="col-md-12">
                 <br />
                 <asp:Button ID="btnCancelar" runat="server" Text="CANCELAR" CssClass="btn btn-danger" OnClick="btnCancelar_Click" />

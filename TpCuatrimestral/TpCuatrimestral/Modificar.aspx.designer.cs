@@ -24,13 +24,31 @@ namespace TpCuatrimestral
         protected global::System.Web.UI.WebControls.GridView dgvArticulo;
 
         /// <summary>
-        /// Control SqlDataSource1.
+        /// Control listaCategoria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.DropDownList listaCategoria;
+
+        /// <summary>
+        /// Control Stock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Stock;
+
+        /// <summary>
+        /// Control listaTalles.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList listaTalles;
 
         /// <summary>
         /// Control btnCancelar.

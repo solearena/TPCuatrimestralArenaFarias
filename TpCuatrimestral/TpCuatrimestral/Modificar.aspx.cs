@@ -66,7 +66,8 @@ namespace TpCuatrimestral
                 }
                 try
                 {
-
+                    CategoriaNegocio categoria = new CategoriaNegocio();
+                    Stock stock = new Stock();
                     int Id = Convert.ToInt32(this.Request.QueryString.Get(0));
                     if (Id != 0)
                     {
@@ -77,6 +78,10 @@ namespace TpCuatrimestral
                         lista.Add(articulo);
                         dgvArticulo.DataSource = lista;
                         dgvArticulo.DataBind();
+                        listaCategoria.DataSource = categoria.listar();
+                        listaCategoria.DataBind();
+                        stock.Talle = listaTalles.SelectedValue;
+                        listaTalles.DataBind();
                     }
                     else
                     {
@@ -115,9 +120,19 @@ namespace TpCuatrimestral
             Articulo articulo = new Articulo();
 
             //ver como hacer para actualizar sin usar la lista o agregando metodo
-
+            articulo.Nombre = e.NewValues[0].ToString();
+            articulo.Descripcion = e.NewValues[1].ToString();
+            articulo.Precio = Convert.ToDecimal(e.NewValues[2].ToString());
+            articulo.UrlImagen = e.NewValues[3].ToString();
+            if (listaCategoria.SelectedValue == "Manga Larga")
+            {
+                articulo.DescripcionCategoria.Descripcion = "Manga Larga";
+            }
+            if (listaCategoria.SelectedValue == "Manga Corta")
+            {
+                articulo.DescripcionCategoria.Descripcion = "Manga Corta";
+            }
             negocio.modificar(articulo);
-
         }
 
         protected void dgvArticulo_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
