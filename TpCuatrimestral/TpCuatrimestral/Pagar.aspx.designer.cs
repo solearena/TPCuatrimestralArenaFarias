@@ -11,25 +11,34 @@ namespace TpCuatrimestral
 {
 
 
-    public partial class Productos
+    public partial class Pagar
     {
 
         /// <summary>
-        /// Control ddlTalle.
+        /// Control imgDinero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTalle;
+        protected global::System.Web.UI.WebControls.Image imgDinero;
 
         /// <summary>
-        /// Control lblStock.
+        /// Control imgBanco.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStock;
+        protected global::System.Web.UI.WebControls.Image imgBanco;
+
+        /// <summary>
+        /// Control imgMP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgMP;
     }
 }

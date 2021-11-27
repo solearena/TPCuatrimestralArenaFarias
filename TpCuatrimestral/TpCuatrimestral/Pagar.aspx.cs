@@ -7,15 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace TpCuatrimestral
 {
-    public partial class Pagina1Login : System.Web.UI.Page
+    public partial class Pagar : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-            {
-                Session.Add("error", "Debes loguearte para ingresar");
-                Response.Redirect("Error.aspx", false);
-            }
+
         }
     }
 }

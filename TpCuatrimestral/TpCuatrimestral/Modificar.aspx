@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Modificar.aspx.cs" Inherits="TpCuatrimestral.Modificar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Modificar.aspx.cs" EnableEventValidation="false"  Inherits="TpCuatrimestral.Modificar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -11,7 +11,7 @@
                 <asp:BoundField DataField="Descripcion" HeaderText="Descripción" />
                 <asp:BoundField DataField="Precio" HeaderText="Precio" />
                 <asp:BoundField DataField="UrlImagen" HeaderText="Imagen" />
-                
+                <asp:BoundField DataField="DescripcionCategoria" HeaderText="Categoría" />
 
                 
             </Columns>        
@@ -25,9 +25,10 @@
             <SortedDescendingCellStyle BackColor="#D8D8F0" />
             <SortedDescendingHeaderStyle BackColor="#3E3277" />
         </asp:GridView>
-        <asp:DropDownList ID="listaCategoria" CssClass="btn btn-outline-dark dropdown-toggle" runat="server"></asp:DropDownList>
-        <asp:TextBox ID="Stock" runat="server" Text="Stock" Height="39px" Width="57px"></asp:TextBox>
-        <asp:DropDownList ID="listaTalles" CssClass="btn btn-outline-dark dropdown-toggle" runat="server">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+            <asp:DropDownList ID="listaCategoria" CssClass="btn btn-outline-danger dropdown-toggle" runat="server"></asp:DropDownList>
+            <asp:TextBox ID="Stock" runat="server" Text="Stock" Height="39px" Width="57px"></asp:TextBox>
+            <asp:DropDownList ID="listaTalles" CssClass="btn btn-outline-danger dropdown-toggle" runat="server">
                     <asp:ListItem Text="S" />
                     <asp:ListItem Text="M" />
                     <asp:ListItem Text="L" />

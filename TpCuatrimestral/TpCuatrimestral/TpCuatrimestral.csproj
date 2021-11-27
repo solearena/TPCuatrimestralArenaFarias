@@ -86,13 +86,19 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Img\banco.png" />
     <Content Include="Content\Img\bote-de-basura.png" />
     <Content Include="Content\Img\carrito-de-compras.png" />
+    <Content Include="Content\Img\dinero-en-efectivo.png" />
+    <Content Include="Content\Img\LogoAnimado.mp4" />
+    <Content Include="Content\Img\LogoNebula3.gif" />
+    <Content Include="Content\Img\MP.jpg" />
     <Content Include="Error.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MenuLogin.aspx" />
     <Content Include="Modificar.aspx" />
+    <Content Include="Pagar.aspx" />
     <Content Include="Pagina1Login.aspx" />
     <Content Include="Pagina2LoginAdmin.aspx" />
     <Content Include="Productos.aspx" />
@@ -162,6 +168,13 @@
     </Compile>
     <Compile Include="Modificar.aspx.designer.cs">
       <DependentUpon>Modificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pagar.aspx.cs">
+      <DependentUpon>Pagar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pagar.aspx.designer.cs">
+      <DependentUpon>Pagar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pagina1Login.aspx.cs">
       <DependentUpon>Pagina1Login.aspx</DependentUpon>

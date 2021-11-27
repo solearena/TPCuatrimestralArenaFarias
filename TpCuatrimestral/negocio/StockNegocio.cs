@@ -23,6 +23,7 @@ namespace negocio
                 {
                     Stock aux = new Stock();
                     aux.Id = (int)datos.Lector["Id"];
+                    aux.IdArticulo = new Articulo();
                     aux.IdArticulo.Id = (int)datos.Lector["IdArticulo"];
                     aux.StockArticulo = (int)datos.Lector["StockArticulo"];
                     aux.Talle = (string)datos.Lector["Talle"];
@@ -61,5 +62,27 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public void modificar(Stock aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE Stock SET StockArticulo = @StockArticulo WHERE IdArticulo = @IdArticulo AND Talle = @Talle");
+                datos.setearParametro("@IdArticulo", aux.IdArticulo.Id);
+                datos.setearParametro("@StockArticulo", aux.StockArticulo);
+                datos.setearParametro("@Talle", aux.Talle);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

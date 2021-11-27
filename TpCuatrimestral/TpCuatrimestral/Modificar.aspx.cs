@@ -68,12 +68,16 @@ namespace TpCuatrimestral
                 {
                     CategoriaNegocio categoria = new CategoriaNegocio();
                     Stock stock = new Stock();
+                    if (this.Request.QueryString.Get(0) == null)
+                    {
+                        return;
+                    }
                     int Id = Convert.ToInt32(this.Request.QueryString.Get(0));
                     if (Id != 0)
                     {
                         this.articulo = articulo;
                         Cargar(Id);
-                        int idart = articulo.Id; //ver porque queda null
+
                         List<Articulo> lista = new List<Articulo>();
                         lista.Add(articulo);
                         dgvArticulo.DataSource = lista;
@@ -117,22 +121,32 @@ namespace TpCuatrimestral
         protected void dgvArticulo_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            Articulo articulo = new Articulo();
+            
+            if(e.NewValues[0] != null)
+            {
+                //ver como hacer para actualizar sin usar la lista o agregando metodo
+                articulo.Nombre = e.NewValues[0].ToString();
+                articulo.Descripcion = e.NewValues[1].ToString();
+                articulo.Precio = Convert.ToDecimal(e.NewValues[2].ToString());
+                articulo.UrlImagen = e.NewValues[3].ToString();
+                if (listaCategoria.SelectedValue == "Manga Larga")
+                {
+                    articulo.DescripcionCategoria.Descripcion = "Manga Larga";
+                }
+                if (listaCategoria.SelectedValue == "Manga Corta")
+                {
+                    articulo.DescripcionCategoria.Descripcion = "Manga Corta";
+                }
+                negocio.modificar(articulo);
 
-            //ver como hacer para actualizar sin usar la lista o agregando metodo
-            articulo.Nombre = e.NewValues[0].ToString();
-            articulo.Descripcion = e.NewValues[1].ToString();
-            articulo.Precio = Convert.ToDecimal(e.NewValues[2].ToString());
-            articulo.UrlImagen = e.NewValues[3].ToString();
-            if (listaCategoria.SelectedValue == "Manga Larga")
-            {
-                articulo.DescripcionCategoria.Descripcion = "Manga Larga";
+                //articulo = null;
             }
-            if (listaCategoria.SelectedValue == "Manga Corta")
+            else
             {
-                articulo.DescripcionCategoria.Descripcion = "Manga Corta";
+                return;
             }
-            negocio.modificar(articulo);
+            dgvArticulo.EditIndex = -1;
+            dgvArticulo.DataBind();
         }
 
         protected void dgvArticulo_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)

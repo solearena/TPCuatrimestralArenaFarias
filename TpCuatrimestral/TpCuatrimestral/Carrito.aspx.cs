@@ -21,6 +21,9 @@ namespace TpCuatrimestral
 
         }
 
-
+        protected void btnPagar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Pagar.aspx");
+        }
     }
 }

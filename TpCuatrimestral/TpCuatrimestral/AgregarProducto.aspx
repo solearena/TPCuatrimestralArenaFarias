@@ -21,9 +21,9 @@
             </div>
             <div class="col-md-2">
                 <asp:Label Text="CATEGORIA" runat="server" />
-                <asp:DropDownList ID="listaCategoria" CssClass="btn btn-outline-dark dropdown-toggle" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="listaCategoria" CssClass="btn btn-outline-danger dropdown-toggle" runat="server"></asp:DropDownList>
                 <asp:Label Text="TALLE" runat="server" />
-                <asp:DropDownList ID="listaTalles" CssClass="btn btn-outline-dark dropdown-toggle" runat="server">
+                <asp:DropDownList ID="listaTalles" CssClass="btn btn-outline-danger dropdown-toggle" runat="server">
                     <asp:ListItem Text="S" />
                     <asp:ListItem Text="M" />
                     <asp:ListItem Text="L" />
