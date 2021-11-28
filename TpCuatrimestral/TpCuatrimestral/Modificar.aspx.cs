@@ -114,13 +114,11 @@ namespace TpCuatrimestral
 
         protected void dgvArticulo_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            dgvArticulo.EditIndex = e.NewEditIndex;
-            dgvArticulo.DataBind();
         }
 
         protected void dgvArticulo_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            ArticuloNegocio negocio = new ArticuloNegocio();
+            /*ArticuloNegocio negocio = new ArticuloNegocio();
             
             if(e.NewValues[0] != null)
             {
@@ -146,13 +144,71 @@ namespace TpCuatrimestral
                 return;
             }
             dgvArticulo.EditIndex = -1;
-            dgvArticulo.DataBind();
+            dgvArticulo.DataBind();*/
         }
 
         protected void dgvArticulo_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            dgvArticulo.EditIndex = -1;
-            dgvArticulo.DataBind();
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            StockNegocio stocknegocio = new StockNegocio();
+            Stock stock = new Stock();
+            if (txtNombre.Text != "")
+            {
+                articulo.Nombre = txtNombre.Text;
+            }
+            else
+            {
+                articulo.Nombre = articulo.Nombre;
+            }
+            if (txtDescripcion.Text != "")
+            {
+                articulo.Descripcion = txtDescripcion.Text;
+            }
+            else
+            {
+                articulo.Descripcion = articulo.Descripcion;
+            }
+            if (txtPrecio.Text != "")
+            {
+                articulo.Precio = Convert.ToDecimal(txtPrecio.Text);
+            }
+            else
+            {
+                articulo.Precio = articulo.Precio;
+            }
+            if (txtImagen.Text != "")
+            {
+                articulo.UrlImagen = txtImagen.Text;
+            }
+            else
+            {
+                articulo.UrlImagen = articulo.UrlImagen;
+            }
+            if (listaCategoria.SelectedValue == "Manga Larga")
+            {
+                articulo.DescripcionCategoria.Descripcion = "Manga Larga";
+            }
+            if (listaCategoria.SelectedValue == "Manga Corta")
+            {
+                articulo.DescripcionCategoria.Descripcion = "Manga Corta";
+            }
+            if (txtStock.Text != "")
+            {
+                stock.IdArticulo = new Articulo();
+                stock.IdArticulo.Id = articulo.Id;
+                stock.StockArticulo = Convert.ToInt32(txtStock.Text);
+                stock.Talle = listaTalles.SelectedItem.Text;
+                stocknegocio.modificar(stock); 
+            }
+            articulo.Estado = true;
+            negocio.modificar(articulo);
+            Response.Write("<script language=javascript>alert('SU PRODUCTO HA SIDO MODIFICADO');</script>");
+            Response.Redirect("Modificar.aspx");
+         
         }
     }
 }
