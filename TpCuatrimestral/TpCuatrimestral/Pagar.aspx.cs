@@ -11,7 +11,16 @@ namespace TpCuatrimestral
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Page.Validate();
+            if (!Page.IsValid)
+            {
+                return;
+            }
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "Para poder abonar debes loguearte. Gracias!");
+                Response.Redirect("Error.aspx", false);
+            }
         }
     }
 }

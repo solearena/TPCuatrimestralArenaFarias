@@ -14,13 +14,22 @@
             <asp:BoundField DataField="DescripcionCategoria" HeaderText="Categoría" />
             <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="150px">
                 <ItemTemplate>
+                    <asp:DropDownList runat="server" CssClass="btn btn-secondary dropdown-toggle" ID="ddlTalle" AutoPostBack="true" OnSelectedIndexChanged="ddlTalle_SelectedIndexChanged">
+                        <asp:ListItem Text="S" />
+                        <asp:ListItem Text="M" />
+                        <asp:ListItem Text="L" />
+                    </asp:DropDownList>
+                    <asp:Label ID="lblStock" runat="server" Text="Stock"></asp:Label>
+                </ItemTemplate>
+
+            </asp:TemplateField>     
+            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="150px">
+                <ItemTemplate>
                     <asp:Button ID="btnModificar" runat="server" Text="Editar" CssClass="btn alert-info" CommandArgument='<%# Eval("ID") %>' CommandName="Edit" OnClick="btnModificar_Click" />
                     <asp:ImageButton ID="imgTacho" runat="server" ImageUrl="~/Content/Img/bote-de-basura.png" OnClick="imgTacho_Click" CommandArgument='<%# Eval("ID") %>' CommandName="Delete"  />
                 </ItemTemplate>
-
-<HeaderStyle Width="150px"></HeaderStyle>
-
-<ItemStyle HorizontalAlign="Center"></ItemStyle>
+                <HeaderStyle Width="150px"></HeaderStyle>
+                <ItemStyle HorizontalAlign="Center"></ItemStyle>
             </asp:TemplateField>
         </Columns>
         <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
@@ -36,7 +45,7 @@
     <div class="row">
         <div class="col">
             <asp:Button runat="server" Text="Agregar"  cssclass="btn btn-danger" ID="btnAgregar" OnClick="btnAgregar_Click"/>
-            <a href="Default.aspx" id="btnDesloguear" class="btn btn-danger" runat="server" onclick="btnDesloguear_Click">Desloguear</a>
+            <asp:Button ID="btnStock" runat="server" Text="Ver Stock" cssclass="btn btn-danger"/>
         </div>
     </div>
 </asp:Content>

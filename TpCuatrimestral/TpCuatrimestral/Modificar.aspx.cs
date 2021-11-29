@@ -206,8 +206,10 @@ namespace TpCuatrimestral
             }
             articulo.Estado = true;
             negocio.modificar(articulo);
+            //es tan rapido que no me lo muestra
             Response.Write("<script language=javascript>alert('SU PRODUCTO HA SIDO MODIFICADO');</script>");
-            Response.Redirect("Modificar.aspx");
+
+            Response.Redirect("Pagina2LoginAdmin.aspx");
          
         }
     }

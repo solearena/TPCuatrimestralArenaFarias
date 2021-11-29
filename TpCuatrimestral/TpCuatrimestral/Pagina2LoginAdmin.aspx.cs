@@ -13,9 +13,12 @@ namespace TpCuatrimestral
     {
         public List<Articulo> listaArticulo { get; set; }
         ArticuloNegocio articuloNegocio = new ArticuloNegocio();
+        public List<Stock> listaStock { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            StockNegocio stockNegocio = new StockNegocio();
+
             Page.Validate();
             if (!Page.IsValid)
             {
@@ -36,6 +39,9 @@ namespace TpCuatrimestral
             try
             {
                 listaArticulo = articuloNegocio.listar();
+                listaStock = stockNegocio.listar();
+
+                
                 dgvArticulos.DataSource = listaArticulo;
                 dgvArticulos.DataBind();
             }
@@ -48,8 +54,7 @@ namespace TpCuatrimestral
 
         protected void btnDesloguear_Click(object sender, EventArgs e)
         {
-            Session.Remove("usuario");
-            Response.Redirect("Default.aspx"); 
+             
         }
 
         protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,6 +106,36 @@ namespace TpCuatrimestral
 
                 throw ex;
             }
+        }
+        public int buscarStock(int idArticulo, string talle)
+        {
+            int stock;
+            StockNegocio negocio = new StockNegocio();
+            try
+            {
+                listaStock = negocio.listar();
+                int i = 0;
+                while (idArticulo != listaStock[i].IdArticulo.Id || talle != listaStock[i].Talle )
+                {
+                    i++;
+                }
+                stock = listaStock[i].StockArticulo;
+
+                i = 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return stock;
+        }
+        protected void ddlTalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int stock;
+            var ddl = sender as DropDownList;
+            stock = buscarStock(dgvArticulos.SelectedIndex, ddl.Text );
+            //lblStock.Text = stock.ToString();
         }
     } 
 }

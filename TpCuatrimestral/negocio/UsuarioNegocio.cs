@@ -111,5 +111,29 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public void modificar(Usuario aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE Usuario SET NombreUsuario = @NOMBREUSUARIO, Contraseña = @CONTRASEÑA WHERE Id = @Id" );
+                datos.setearParametro("@Id", aux.IdUsuario);
+                datos.setearParametro("@NOMBREUSUARIO", aux.NombreUsuario);
+                datos.setearParametro("@CONTRASEÑA", aux.Contrasenia);
+                datos.setearParametro("@TIPOUSUARIO", 1);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

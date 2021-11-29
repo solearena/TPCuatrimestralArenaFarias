@@ -2,16 +2,25 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
-        <asp:Image ID="imgDinero" runat="server" ImageUrl="~/Content/Img/dinero-en-efectivo.png"/>
-        Pago en efectivo
+     <div  class="d-flex justify-content-center">
+        <h1 class="text-dark" style="font-size:120px; font-family:'Goudy Old Style' ">NEBULA</h1>
     </div>
-    <div>
-        <asp:Image ID="imgBanco" ImageUrl="~/Content/Img/banco.png" runat="server" />
-        Transferencia Bancaria
-    </div>
-    <div>
-        <asp:Image ID="imgMP" ImageUrl="~/Content/Img/MP.jpg" runat="server" />
-        Mercado Pago
+
+    <div class="form-group text-center">
+        <div>
+            <asp:Image ID="imgDinero" runat="server" ImageUrl="~/Content/Img/dinero-en-efectivo.png"/>
+            <b>Pago en efectivo: </b> Al momento de recibir el producto, se hará efectivo el pago del mismo.
+        </div>
+        <br />
+        <div>
+            <asp:Image ID="imgBanco" ImageUrl="~/Content/Img/banco.png" runat="server" />
+            <b>Transferencia Bancaria: </b> Pago offline. Luego de efectuar tu pedido completo hasta el final, hace la transferencia desde tu home banking
+        </div>
+        <br />
+        <div>
+            <asp:Image ID="imgMP" ImageUrl="~/Content/Img/ML.png" runat="server" />
+            <b>Mercado Pago</b>
+        </div>
+        <br />
     </div>
 </asp:Content>

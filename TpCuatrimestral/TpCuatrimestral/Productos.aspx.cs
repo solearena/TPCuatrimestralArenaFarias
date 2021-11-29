@@ -75,7 +75,8 @@ namespace TpCuatrimestral
 
         protected void ddlTalle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            talle = ddlTalle.SelectedItem.Text;
+            var ddl = sender as DropDownList;
+            talle = sender.ToString();
         }
     }
 

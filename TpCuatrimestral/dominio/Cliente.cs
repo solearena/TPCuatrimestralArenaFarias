@@ -17,5 +17,10 @@ namespace dominio
         public string FechaNacimiento { get; set; }
         public string Celular { get; set; }
         public string Email { get; set; }
+        public Usuario IdUsuario { get; set; }
+        public Direccion IdDireccion { get; set; }
+        public Direccion Calle { get; set; }
+        public Direccion Prov { get; set; }
+        public Direccion Pais { get; set; }
     }
 }
