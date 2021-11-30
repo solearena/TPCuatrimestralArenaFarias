@@ -34,25 +34,33 @@ namespace TpCuatrimestral
 
                 try
                 {
-                    usuario = new Usuario(TxtNombreUsuario.Text,txtPassword.Text,false);
-
-                    usuario.NombreUsuario = TxtNombreUsuario.Text;
-                    usuario.Contrasenia = txtPassword.Text;
-                    usuarionegocio.agregar(usuario);
                     direccion.CalleNum = txtDireccion.Text;
                     direccion.CodPostal = txtCodPostal.Text;
                     direccion.Provincia = txtProvincia.Text;
                     direccion.Pais = TxtPais.Text;
-                    direccionNegocio.agregar(direccion);
                     cliente.Nombre = TxtNombre.Text;
                     cliente.Apellido = TxtApellido.Text;
                     cliente.DNI = TxtDni.Text;
                     cliente.FechaNacimiento = txtNacimiento.Text;
                     cliente.Celular = TxtCelular.Text;
                     cliente.Email = txtEmail.Text;
-                    clienteNegocio.agregar(cliente);
+                    usuario = new Usuario(TxtNombreUsuario.Text, txtPassword.Text, false);
+                    usuario.NombreUsuario = TxtNombreUsuario.Text;
+                    usuario.Contrasenia = txtPassword.Text;
 
-                    Response.Redirect("Default.aspx");
+                    if (usuarionegocio.existeUsuario(TxtNombreUsuario.Text))
+                    {
+                        Session.Add("ERROR", "NOMBRE DE USUARIO EXISTENTE");
+                        Response.Redirect("Error.aspx");
+                    }
+                    else
+                    {
+                        clienteNegocio.agregar(cliente);
+                        usuarionegocio.agregar(usuario);
+                        direccionNegocio.agregar(direccion);
+                        Response.Redirect("Default.aspx");
+
+                    }
                 }
                 catch (Exception ex)
                 {

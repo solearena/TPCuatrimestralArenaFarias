@@ -3,21 +3,28 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <br />
-    <div class="col-md-6" style="text-align:justify; margin:auto">
- 
-        <div class="mb-3">
-            <asp:Label ID="Label1" runat="server" Text="Label">Usuario</asp:Label>
-            <asp:TextBox ID="TxtUsuario" runat="server" placeholder="usuario" CssClass="form-control"></asp:TextBox>
+    <div class="wrapper" >
+        <div class="formcontent">
+                <div class="form-control">
+                    <div class="row">
+                        <asp:Label class="h2" ID="lblBienvenida" runat="server" Text="BIENVENIDO/A NEBULA"></asp:Label>
+                    </div>
+                    <div>
+                        <asp:Label ID="lblUsuario" runat="server" Text="Usuario:"></asp:Label>
+                        <asp:TextBox ID="TxtUsuario" CssClass="form-control" runat="server" placeholder="Nombre de Usuario"></asp:TextBox>
+                    </div>
+                    <div>
+                        <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
+                        <asp:TextBox ID="TxtContrasenia" CssClass="form-control" TextMode="Password" runat="server" placeholder="Contraseña"></asp:TextBox>
+                    </div>
+                    <hr />
+                    <br />
+                    <div class="row">
+                        <asp:Button ID="BtnIngresar" CssClass="btn btn-danger" runat="server" Text="Ingresar" OnClick="Button1_Click" />
+                    </div>
+                </div>
         </div>
-        <div class="mb-3">
-            <asp:Label ID="Label2" runat="server" Text="Label">Contraseña</asp:Label>
-            <asp:TextBox ID="TxtContrasenia" runat="server" placeholder="*****" CssClass="form-control" TextMode="Password" ></asp:TextBox>
-        </div>
-        <div class="col-12">
-            <asp:Button ID="Button1" runat="server" Text="Ingresar" cssclass="btn btn-danger" OnClick="Button1_Click" />
-        </div>
-
     </div>
-    <br />
 </asp:Content>
+
+

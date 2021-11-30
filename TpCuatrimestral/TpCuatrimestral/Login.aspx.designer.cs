@@ -15,13 +15,22 @@ namespace TpCuatrimestral
     {
 
         /// <summary>
-        /// Control Label1.
+        /// Control lblBienvenida.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblBienvenida;
+
+        /// <summary>
+        /// Control lblUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUsuario;
 
         /// <summary>
         /// Control TxtUsuario.
@@ -33,13 +42,13 @@ namespace TpCuatrimestral
         protected global::System.Web.UI.WebControls.TextBox TxtUsuario;
 
         /// <summary>
-        /// Control Label2.
+        /// Control lblPassword.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblPassword;
 
         /// <summary>
         /// Control TxtContrasenia.
@@ -51,12 +60,12 @@ namespace TpCuatrimestral
         protected global::System.Web.UI.WebControls.TextBox TxtContrasenia;
 
         /// <summary>
-        /// Control Button1.
+        /// Control BtnIngresar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button BtnIngresar;
     }
 }

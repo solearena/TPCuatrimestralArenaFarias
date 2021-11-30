@@ -87,7 +87,32 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public bool existeUsuario(string usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Select NombreUsuario from USUARIO where NombreUsuario = @usuario ");
+                datos.setearParametro("@usuario", usuario);
+                datos.ejecutarLectura();
 
+                while (datos.Lector.Read())
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void agregar(Usuario aux)
         {
             AccesoDatos datos = new AccesoDatos();
