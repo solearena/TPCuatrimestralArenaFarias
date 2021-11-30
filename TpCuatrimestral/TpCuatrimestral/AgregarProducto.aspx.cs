@@ -79,7 +79,7 @@ namespace TpCuatrimestral
                     stock.Talle = listaTalles.SelectedValue;
                     stocknegocio.agregar(stock);
                     Response.Redirect("Pagina2LoginAdmin.aspx");
-
+                    //hay que ver porque no podemos agregar el talle
                 }
                 catch (Exception ex)
                 {
