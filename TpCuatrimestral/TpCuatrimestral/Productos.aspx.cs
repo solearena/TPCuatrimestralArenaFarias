@@ -45,14 +45,14 @@ namespace TpCuatrimestral
                     int cantidad;
                     cantidad = buscarStock(idArt, talle);
                     lblStock.Text = cantidad.ToString();
-                    if(cantidad == 0)
+                    if (cantidad == 0)
                     {
                         Response.Write("<script language=javascript>alert('SIN STOCK');</script>");
                     }
                     else
                     {
                         listaCarrito.Add(listaArticulo.Find(x => x.Id == int.Parse(id)));
-                        
+
                         Session.Add("listaCarrito", listaCarrito);
                     }
                 }
@@ -63,8 +63,8 @@ namespace TpCuatrimestral
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             StockNegocio stockNegocio = new StockNegocio();
-            int cantidad, i=0;
-            while(idArt != listaStock[i].IdArticulo.Id || talle != listaStock[i].Talle)
+            int cantidad, i = 0;
+            while (idArt != listaStock[i].IdArticulo.Id || talle != listaStock[i].Talle)
             {
                 i++;
             }
@@ -78,6 +78,41 @@ namespace TpCuatrimestral
             var ddl = sender as DropDownList;
             talle = sender.ToString();
         }
-    }
 
+        protected void btnElegir_Click(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                ArticuloNegocio negocio = new ArticuloNegocio();
+                StockNegocio stockNegocio = new StockNegocio();
+                listaArticulo = negocio.listar();
+                Session.Add("listaArticulo", listaArticulo);
+                if (Session["listaCarrito"] == null)
+                {
+                    listaCarrito = new List<Articulo>();
+                    Session.Add("listaCarrito", listaCarrito);
+                }
+                if (Request.QueryString["id"] != null)
+                {
+                    string id = Request.QueryString["id"].ToString();
+                    listaCarrito = (List<Articulo>)Session["listaCarrito"];
+                    listaArticulo = (List<Articulo>)Session["listaArticulo"];
+                    ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", "ModalStock('" + "MostrarStock" + "');", true);
+                    string talle = ddlTalle.SelectedItem.Value;
+                    int idArt = int.Parse(id);
+                    if (buscarStock(idArt, talle) == 0)
+                    {
+                        Response.Write("<script language=javascript>alert('SIN STOCK');</script>");
+                        return;
+                    }
+                    lblStock.Text = buscarStock(idArt, talle).ToString();
+                    listaCarrito.Add(listaArticulo.Find(x => x.Id == int.Parse(id)));
+                    Session.Add("listaCarrito", listaCarrito);
+
+                }
+
+
+            }
+        }
+    }
 }

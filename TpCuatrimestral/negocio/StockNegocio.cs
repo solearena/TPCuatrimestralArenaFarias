@@ -41,7 +41,37 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-        
+        public List<Stock> cargarStockPorArticulo(int id)
+        {
+            List<Stock> lista = new List<Stock>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT S.Id, S.IdArticulo, S.StockArticulo, S.Talle FROM Stock AS S INNER JOIN Articulo AS A ON A.Id = S.IdArticulo WHERE S.IdArticulo = "+@id +"");
+                datos.setearParametro("IdArticulo",id);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Stock aux = new Stock();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.StockArticulo = (int)datos.Lector["StockArticulo"];
+                    aux.Talle = (string)datos.Lector["Talle"];
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void agregar(Stock aux)
         {
             AccesoDatos datos = new AccesoDatos();

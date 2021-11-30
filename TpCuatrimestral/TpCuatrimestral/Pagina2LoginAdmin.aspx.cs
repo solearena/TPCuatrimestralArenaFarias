@@ -14,6 +14,7 @@ namespace TpCuatrimestral
         public List<Articulo> listaArticulo { get; set; }
         ArticuloNegocio articuloNegocio = new ArticuloNegocio();
         public List<Stock> listaStock { get; set; }
+        public List<Stock> listaStock2 { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -130,12 +131,70 @@ namespace TpCuatrimestral
             }
             return stock;
         }
+        private Stock cargarStock(int idArt)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                StockNegocio stockNegocio = new StockNegocio();
+                Stock stock = new Stock();
+                int i = 0;
+                while (idArt != listaStock[i].IdArticulo.Id)
+                {
+                    i++;
+                }
+                stock.Id = listaStock[i].Id;
+                stock.IdArticulo = new Articulo();
+                stock.IdArticulo.Id = listaStock[i].IdArticulo.Id;
+                stock.Talle = listaStock[i].Talle;
+                stock.StockArticulo = listaStock[i].StockArticulo;
+                
+                i = 0;
+                return stock;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         protected void ddlTalle_SelectedIndexChanged(object sender, EventArgs e)
         {
             int stock;
             var ddl = sender as DropDownList;
             stock = buscarStock(dgvArticulos.SelectedIndex, ddl.Text );
             //lblStock.Text = stock.ToString();
+        }
+
+        protected void btnStock_Click(object sender, EventArgs e)
+        {
+
+            int id = Convert.ToInt32((sender as Button).CommandArgument);
+
+            ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", "ModalStock('" + "MostrarStock" + "');", true);
+
+            Articulo articulo = new Articulo();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            StockNegocio stockneg = new StockNegocio();
+            Stock stock = new Stock();
+
+            stock = cargarStock(id);
+
+            listaStock2 = stockneg.cargarStockPorArticulo(id);
+            dgvStock.DataSource = listaStock2;
+            dgvStock.DataBind();
+
+            
+            
+            
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this,typeof(Page),"cerrar", "ModalStock('" + "Cerrar" + "');", true);
         }
     } 
 }
