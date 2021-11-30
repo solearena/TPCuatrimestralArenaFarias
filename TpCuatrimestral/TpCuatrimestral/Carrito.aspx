@@ -10,13 +10,20 @@
             <asp:BoundField DataField="Nombre" HeaderText="Nombre Producto" />
             <asp:BoundField DataField="Precio" HeaderText="Precio" />
             
-             <%-- <asp:BoundField DataField="Talle" HeaderText="Talle" />
-            <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />--%>
+             <asp:BoundField DataField="Talle" HeaderText="Talle" />
+            <%-- <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />--%>
             <asp:CommandField ShowSelectButton="true"/>
             <asp:CommandField ShowDeleteButton="true"/>
 
 
         </Columns>
     </asp:GridView>
-    <asp:Button ID="btnPagar" runat="server" Text="Pagar" CssClass="btn btn-danger" OnClick="btnPagar_Click"/>
+    <div class="text-end fw-bold">
+        <div class="align-content-center text-center">
+            <asp:Button ID="btnPagar" runat="server" Text="Pagar" CssClass="btn btn-danger text-center" BorderStyle="Groove" OnClick="btnPagar_Click"/>
+        </div>
+        <asp:Label Text="TOTAL: $" runat="server" />
+        <asp:Label Text="" runat="server" ID="lblTotal" />
+    </div>
+
 </asp:Content>

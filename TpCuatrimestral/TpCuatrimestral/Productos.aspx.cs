@@ -27,7 +27,7 @@ namespace TpCuatrimestral
                 //ddlTalle.Items.Insert(2, new ListItem("L", "L"));
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 StockNegocio stockNegocio = new StockNegocio();
-                listaArticulo = negocio.listar();
+                listaArticulo = negocio.listar2();
                 Session.Add("listaArticulo", listaArticulo);
                 if (Session["listaCarrito"] == null)
                 {

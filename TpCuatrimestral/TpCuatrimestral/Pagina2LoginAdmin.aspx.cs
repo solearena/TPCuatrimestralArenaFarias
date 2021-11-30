@@ -144,7 +144,7 @@ namespace TpCuatrimestral
                 {
                     i++;
                 }
-                stock.Id = listaStock[i].Id;
+                //stock.Id = listaStock[i].Id;
                 stock.IdArticulo = new Articulo();
                 stock.IdArticulo.Id = listaStock[i].IdArticulo.Id;
                 stock.Talle = listaStock[i].Talle;

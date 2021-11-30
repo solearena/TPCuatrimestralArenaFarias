@@ -46,10 +46,13 @@
                             </li>
                         <%} %>
                     <%if(Session["usuario"] != null)
-                        {%>
-                            <li class="nav-item">
-                                <a class="nav-link" >MODIFICAR USUARIO</a>
-                            </li>
+                        {
+                            if((((dominio.Usuario)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.NORMAL))
+                            {%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../ModificarUsuario.aspx">MODIFICAR USUARIO</a>
+                                </li>
+                           <%} %>
                             <li class="nav-item">
                                 <a class="nav-link" href="../CerrarSesion.aspx">CERRAR SESIÓN</a>
                             </li>

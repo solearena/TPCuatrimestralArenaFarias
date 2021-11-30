@@ -101,6 +101,7 @@
     <Content Include="Login.aspx" />
     <Content Include="MenuLogin.aspx" />
     <Content Include="Modificar.aspx" />
+    <Content Include="ModificarUsuario.aspx" />
     <Content Include="Pagar.aspx" />
     <Content Include="Pagina1Login.aspx" />
     <Content Include="Pagina2LoginAdmin.aspx" />
@@ -190,6 +191,13 @@
     </Compile>
     <Compile Include="Modificar.aspx.designer.cs">
       <DependentUpon>Modificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarUsuario.aspx.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarUsuario.aspx.designer.cs">
+      <DependentUpon>ModificarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pagar.aspx.cs">
       <DependentUpon>Pagar.aspx</DependentUpon>
