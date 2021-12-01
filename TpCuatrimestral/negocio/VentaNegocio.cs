@@ -17,30 +17,15 @@ using dominio;
 
             try
             {
-                datos.setearConsulta("");//agregar consulta de bbdd
+                Venta aux = new Venta();
+
+                datos.setearConsulta("Select Id,Total,FechaCompra,IdFOP,IdCliente from Venta");
+                datos.setearParametro("Id", aux.IdVenta);
+                datos.setearParametro("Total",aux.Total);
+                datos.setearParametro("FechaCompra", aux.FechaCompra);
+                datos.setearParametro("IdFOP", aux.FOP);
+                datos.setearParametro("IdCliente",aux.IdCliente);
                 datos.ejecutarLectura();
-
-                while (datos.Lector.Read())
-                {
-                    Venta aux = new Venta();
-                    /*aux.Id = (int)datos.Lector["Id"];
-                    aux.CodigoArticulo = (string)datos.Lector["Codigo"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
-                    {
-                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-                    }
-                    aux.DescripcionMarca = new Marca();
-                    aux.DescripcionMarca.Id = (int)datos.Lector["Id"];
-                    aux.DescripcionMarca.Descripcion = (string)datos.Lector["Marca"];
-                    aux.DescripcionCategoria = new Categoria();
-                    aux.DescripcionCategoria.Id = (int)datos.Lector["Id"];
-                    aux.DescripcionCategoria.Descripcion = (string)datos.Lector["Categoria"];
-                    lista.Add(aux);*/
-
-                }
 
                 return lista;
             }
