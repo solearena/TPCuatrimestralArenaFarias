@@ -22,5 +22,12 @@ namespace dominio
         public Direccion Calle { get; set; }
         public Direccion Prov { get; set; }
         public Direccion Pais { get; set; }
+        public override string ToString()
+        {
+            return Nombre;
+        }
+        
+
+
     }
 }

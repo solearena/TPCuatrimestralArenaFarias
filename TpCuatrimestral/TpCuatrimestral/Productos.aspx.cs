@@ -106,7 +106,7 @@ namespace TpCuatrimestral
                     string id = Request.QueryString["id"].ToString();
                     listaCarrito = (List<Articulo>)Session["listaCarrito"];
                     listaArticulo = (List<Articulo>)Session["listaArticulo"];
-                    //ScriptManager.RegisterStartupScript(this, typeof(Page), "popup", "ModalStock('" + "MostrarStock" + "');", true);
+
                     string talle = ddlTalle.SelectedItem.Value;
                     int idArt = int.Parse(id);
                     if (buscarStock(idArt, talle) == 0)

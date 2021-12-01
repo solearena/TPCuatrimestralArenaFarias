@@ -15,5 +15,10 @@ namespace dominio
         public string FechaCompra { get; set; }
         [DisplayName("Forma de Pago")]
         public FormaDePago FOP { get; set; }
+        public Cliente IdCliente { get; set; }
+        public override string ToString()
+        {
+            return FechaCompra;
+        }
     }
 }

@@ -8,7 +8,9 @@ namespace dominio
 {
     public class ElementoCarrito
     {
+        public Articulo IdArticulo { get; set; }
         public int Cantidad { get; set; }
+        public string Talle { get; set; }
 
     }
 }

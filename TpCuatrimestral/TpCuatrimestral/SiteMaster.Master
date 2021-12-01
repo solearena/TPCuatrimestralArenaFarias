@@ -47,6 +47,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" style="color:darkblue" href="../Pagina2LoginAdmin.aspx">LISTADO PRODUCTOS</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color:darkblue" href="../Ventas.aspx">VENTAS</a>
+                            </li>
                         <%} %>
                     <%if(Session["usuario"] != null)
                         {
@@ -54,6 +57,9 @@
                             {%>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../ModificarUsuario.aspx">MODIFICAR USUARIO</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../MisCompras.aspx">MIS COMPRAS</a>
                                 </li>
                            <%} %>
                             <li class="nav-item">
