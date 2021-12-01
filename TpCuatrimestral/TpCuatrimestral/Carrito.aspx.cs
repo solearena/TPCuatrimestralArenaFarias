@@ -23,7 +23,7 @@ namespace TpCuatrimestral
             {
                 Stock aux = new Stock();
                 aux.StockArticulo = listaCarrito[i].Stock.StockArticulo;
-                aux.Talle = listaCarrito[i].Talle.Talle;
+                aux.Talle = listaCarrito[i].Stock.Talle;
                 aux.IdArticulo = new Articulo();
                 aux.IdArticulo.Id = listaCarrito[i].Id;
                 listaStock.Add(aux);

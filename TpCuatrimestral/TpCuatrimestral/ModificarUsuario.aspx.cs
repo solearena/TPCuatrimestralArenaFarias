@@ -26,53 +26,53 @@ namespace TpCuatrimestral
                 UsuarioNegocio usuarionegocio = new UsuarioNegocio();
                 DireccionNegocio direccionNegocio = new DireccionNegocio();
                 
-                try
-                {
-                    usuario = (Usuario)Session["usuario"];
-                    direccion = direccionNegocio.buscarDireccion(usuario.NombreUsuario);
-                    if (txtdireccion.Text == "")
-                    {
-                        direccion.CalleNum = direccion.CalleNum;
-                    }
-                    else
-                    {
-                        direccion.CalleNum = txtdireccion.Text;
-                    }
-                    if (txtcodpostal.Text == "")
-                    {
-                        direccion.CodPostal = direccion.CodPostal;
-                    }
-                    else
-                    {
-                        direccion.CodPostal = txtcodpostal.Text;
-                    }
-                    if (txtprovincia.Text == "")
-                    {
-                        direccion.Provincia = direccion.Provincia;
-                    }
-                    else
-                    {
-                        direccion.Provincia = txtprovincia.Text;
-                    }
-                    if (txtpais.Text == "")
-                    {
-                        direccion.Pais = direccion.Pais;
-                    }
-                    else
-                    {
-                        direccion.Pais = txtpais.Text;
-                    } 
-                    direccionNegocio.agregar(direccion);
-                    Response.Redirect("Default.aspx");
-                }
-                catch (Exception ex)
-                {
+            //    try
+            //    {
+            //        usuario = (usuario)session["usuario"];
+            //        //direccion = direccionnegocio.buscardireccion(usuario.nombreusuario);
+            //        if (txtdireccion.text == "")
+            //        {
+            //            direccion.callenum = direccion.callenum;
+            //        }
+            //        else
+            //        {
+            //            direccion.callenum = txtdireccion.text;
+            //        }
+            //        if (txtcodpostal.text == "")
+            //        {
+            //            direccion.codpostal = direccion.codpostal;
+            //        }
+            //        else
+            //        {
+            //            direccion.codpostal = txtcodpostal.text;
+            //        }
+            //        if (txtprovincia.text == "")
+            //        {
+            //            direccion.provincia = direccion.provincia;
+            //        }
+            //        else
+            //        {
+            //            direccion.provincia = txtprovincia.text;
+            //        }
+            //        if (txtpais.text == "")
+            //        {
+            //            direccion.pais = direccion.pais;
+            //        }
+            //        else
+            //        {
+            //            direccion.pais = txtpais.text;
+            //        } 
+            //        direccionnegocio.agregar(direccion);
+            //        response.redirect("default.aspx");
+            //    }
+            //    catch (exception ex)
+            //    {
 
-                    throw ex;
-                }
+            //        throw ex;
+            //    }
 
             }
-        }
+       }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
