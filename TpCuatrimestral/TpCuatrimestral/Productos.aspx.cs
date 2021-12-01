@@ -11,7 +11,7 @@ namespace TpCuatrimestral
 {
     public partial class Productos : System.Web.UI.Page
     {
-        public List<Articulo> listaArticulo { get; set; }
+        public static List<Articulo> listaArticulo { get; set; }
 
         private List<Articulo> listaCarrito;
 
@@ -43,18 +43,18 @@ namespace TpCuatrimestral
                     string talle = ddlTalle.SelectedValue; //no obtenemos el valor seleccionado
                     int idArt = int.Parse(id);
                     int cantidad;
-                    cantidad = buscarStock(idArt, talle);
-                    lblStock.Text = cantidad.ToString();
-                    if (cantidad == 0)
-                    {
-                        Response.Write("<script language=javascript>alert('SIN STOCK');</script>");
-                    }
-                    else
-                    {
-                        listaCarrito.Add(listaArticulo.Find(x => x.Id == int.Parse(id)));
+                    //cantidad = buscarStock(idArt, talle);
+                    //lblStock.Text = cantidad.ToString();
+                    //if (cantidad == 0)
+                    //{
+                    //    Response.Write("<script language=javascript>alert('SIN STOCK');</script>");
+                    //}
+                    //else
+                    //{
+                    //    listaCarrito.Add(listaArticulo.Find(x => x.Id == int.Parse(id)));
 
-                        Session.Add("listaCarrito", listaCarrito);
-                    }
+                    //    Session.Add("listaCarrito", listaCarrito);
+                    //}
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace TpCuatrimestral
                         Response.Write("<script language=javascript>alert('SIN STOCK');</script>");
                         return;
                     }
-                    lblStock.Text = buscarStock(idArt, talle).ToString();
+                    //lblStock.Text = buscarStock(idArt, talle).ToString();
                     listaCarrito.Add(listaArticulo.Find(x => x.Id == int.Parse(id)));
                     Session.Add("listaCarrito", listaCarrito);
 

@@ -162,7 +162,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Stock SET StockArticulo = @StockArticulo - 1 WHERE IdArticulo = @IdArticulo AND Talle = @Talle");
+                datos.setearConsulta("UPDATE Stock SET StockArticulo = @StockArticulo - '1' WHERE IdArticulo = @IdArticulo AND Talle = @Talle");
                 datos.setearParametro("@IdArticulo", aux.IdArticulo.Id);
                 datos.setearParametro("@StockArticulo", aux.StockArticulo);
                 datos.setearParametro("@Talle", aux.Talle);

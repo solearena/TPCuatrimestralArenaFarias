@@ -22,5 +22,9 @@ namespace dominio
         public Categoria IdCategoria{ get; set; }
         public Stock Stock { get; set; }
         public Stock Talle { get; set; }
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

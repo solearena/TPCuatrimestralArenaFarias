@@ -69,6 +69,58 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public Direccion buscarDireccion(String usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Direccion aux = new Direccion();
+
+            try
+            {
+                datos.setearConsulta("SELECT D.CalleNum, D.CodigoPostal, D.Pais, D.Provincia FROM Direccion AS D INNER JOIN Cliente AS C ON C.IdDireccion = D.Id INNER JOIN Usuario AS U ON U.Id = C.IdUsuario where U.NombreUsuario = " + @usuario +"");
+                datos.setearParametro("@CALLE", aux.CalleNum);
+                datos.setearParametro("@CODIGOPOSTAL", aux.CodPostal);
+                datos.setearParametro("@PROVINCIA", aux.Provincia);
+                datos.setearParametro("@PAIS", aux.Pais);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+
+                datos.cerrarConexion();
+            }
+
+            return aux;
+        }
+        public void modificar(Direccion aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE Direccion SET CalleNum = @CALLE, CodPostal = @CODIGOPOSTAL, Provincia = @PROVINCIA, Pais = @PAIS WHERE IdDireccion = @IdDireccion");
+                datos.setearParametro("@CALLE", aux.CalleNum);
+                datos.setearParametro("@CODIGOPOSTAL", aux.CodPostal);
+                datos.setearParametro("@PROVINCIA", aux.Provincia);
+                datos.setearParametro("@PAIS", aux.Pais);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
     }
 }
 

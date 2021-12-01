@@ -90,6 +90,8 @@
     <Content Include="Content\Img\banco.png" />
     <Content Include="Content\Img\bote-de-basura.png" />
     <Content Include="Content\Img\carrito-de-compras.png" />
+    <Content Include="Content\Img\Dimensiones personalizadas 27x27 px.png" />
+    <Content Include="Content\Img\Dimensiones personalizadas 60x60 px.png" />
     <Content Include="Content\Img\dinero-en-efectivo.png" />
     <Content Include="Content\Img\LogoAnimado.mp4" />
     <Content Include="Content\Img\LogoNebula3.gif" />

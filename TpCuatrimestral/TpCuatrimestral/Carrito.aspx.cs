@@ -18,10 +18,10 @@ namespace TpCuatrimestral
             dgvCarrito.DataSource = Session["listaCarrito"];
             dgvCarrito.DataBind();
             listaCarrito = (List<Articulo>)Session["listaCarrito"];
-            Stock aux = new Stock();
             decimal total = 0;
             for (int i = 0; i < dgvCarrito.Rows.Count; i++)
             {
+                Stock aux = new Stock();
                 aux.StockArticulo = listaCarrito[i].Stock.StockArticulo;
                 aux.Talle = listaCarrito[i].Talle.Talle;
                 aux.IdArticulo = new Articulo();
@@ -43,10 +43,10 @@ namespace TpCuatrimestral
 
         protected void btnPagar_Click(object sender, EventArgs e)
         {
-            StockNegocio negocio = new StockNegocio();
 
             for (int i = 0; i < dgvCarrito.Rows.Count; i++)
             {
+                StockNegocio negocio = new StockNegocio();
                 negocio.descontarStock(listaStock[i]);
             }
             Session["listaCarrito"] = null;

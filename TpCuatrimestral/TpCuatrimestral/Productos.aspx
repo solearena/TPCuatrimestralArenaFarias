@@ -1,30 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Productos.aspx.cs" Inherits="TpCuatrimestral.Productos" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div  class="d-flex justify-content-center">
-        <h1 class="text-dark" style="font-size:120px; font-family:'Goudy Old Style' ">NEBULA</h1>
-    </div>
-    <div class="modal-fade position-absolute top-50 start-50 translate-middle d-none" tabindex="-1" role="dialog" id="miModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">SELECCIONE EL TALLE</h5>
-                    </div>
-                    <div class="modal-body">
-                        <asp:DropDownList ID="ddlTalle" runat="server">
-                            <asp:ListItem Text="S" Value="S"/>
-                            <asp:ListItem Text="M" Value="M"/>
-                            <asp:ListItem Text="L" Value="L"/>
-                        </asp:DropDownList>
-                        <asp:Label ID="lblStock" runat="server" Text="Stock" Visible ="false"></asp:Label>
-                    </div>
-                    <div class="modal-footer">
-                        <asp:Button runat="server" ID="btnCancelar" CssClass="btn btn-secondary" Text="CANCELAR" data-dismiss="modal" />
-                        <asp:Button runat="server" ID="btnComprar" CssClass="btn btn-secondary" Text="COMPRAR" data-dismiss="modal" />
-                    </div>
-                </div>
-            </div>
-        </div>
     <div class="container">
         <div class="row" style="display:flex">
 
@@ -50,7 +26,7 @@
                         <p class="card-text"><%= item.Descripcion %></p>
                         <h6 class="card-text"> $<% = item.Precio %></h6>
                         <a href="Productos.aspx?id=<%:item.Id%>" class ="btn btn-danger">COMPRAR</a>
-                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btn btn-outline-danger dropdown-toggle" OnSelectedIndexChanged="ddlTalle_SelectedIndexChanged" AutoPostBack="true" >
+                        <asp:DropDownList ID="ddlTalle" runat="server" CssClass="btn btn-outline-danger dropdown-toggle" OnSelectedIndexChanged="ddlTalle_SelectedIndexChanged" AutoPostBack="true" >
                             <asp:ListItem Text="S" Value="S"/>
                             <asp:ListItem Text="M" Value="M"/>
                             <asp:ListItem Text="L" Value="L"/>
