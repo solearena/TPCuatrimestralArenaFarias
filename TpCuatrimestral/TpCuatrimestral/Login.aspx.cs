@@ -20,14 +20,18 @@ namespace TpCuatrimestral
         {
             Usuario usuario;
             UsuarioNegocio negocio = new UsuarioNegocio();
-
+            ClienteNegocio clienteNegocio = new ClienteNegocio();
             
             try
             {
                 usuario = new Usuario(TxtUsuario.Text, TxtContrasenia.Text, false);
+                string nombreUsuario = TxtUsuario.Text;
+                int cliente = clienteNegocio.buscarCliente(nombreUsuario);
+
                 if (negocio.Loguear(usuario))
                 {
                     Session.Add("usuario", usuario);
+                    Session.Add("cliente", cliente);
                     Response.Redirect("Pagina2LoginAdmin.aspx", false);
                     Context.ApplicationInstance.CompleteRequest();
 

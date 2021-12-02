@@ -69,7 +69,7 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-        public Direccion buscarDireccion(String usuario)
+        public Direccion buscarDireccion(string usuario)
         {
             AccesoDatos datos = new AccesoDatos();
             Direccion aux = new Direccion();

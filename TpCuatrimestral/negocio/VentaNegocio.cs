@@ -17,21 +17,45 @@ using dominio;
 
             try
             {
-                Venta aux = new Venta();
-
-                datos.setearConsulta("Select Id,Total,FechaCompra,IdFOP,IdCliente from Venta");
-                datos.setearParametro("Id", aux.IdVenta);
-                datos.setearParametro("Total",aux.Total);
-                datos.setearParametro("FechaCompra", aux.FechaCompra);
-                datos.setearParametro("IdFOP", aux.FOP);
-                datos.setearParametro("IdCliente",aux.IdCliente);
+                datos.setearConsulta("Select V.Id, V.Total, V.FechaCompra, F.Tipo, V.IdCliente FROM Venta AS V INNER JOIN FOP AS F ON F.Id = V.IdFOP ");
                 datos.ejecutarLectura();
 
+                while (datos.Lector.Read())
+                {
+                    Venta aux = new Venta();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Total = (decimal)datos.Lector["Total"];
+                    aux.FOP = new FormaDePago();
+                    aux.FOP.Tipo = (string)datos.Lector["Tipo"];
+                    aux.FechaCompra = (string)datos.Lector["FechaCompra"];
+                    aux.IdCliente = new Cliente();
+                    aux.IdCliente.IdCliente = (int)datos.Lector["IdCliente"];
+                    lista.Add(aux);
+                }
                 return lista;
             }
             catch (Exception ex)
             {
-
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void guardar(Venta aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO Venta(Total, FechaCompra, IdFOP, IdCliente) VALUES (@Total, GETDATE(), @IdFOP, @IdCliente)");
+                datos.setearParametro("@Total", aux.Total);
+                datos.setearParametro("@IdFOP", aux.FOP.IdFP);
+                datos.setearParametro("IdCliente", aux.IdCliente.IdCliente);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally

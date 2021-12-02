@@ -21,7 +21,7 @@ namespace TpCuatrimestral
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgDinero;
+        protected global::System.Web.UI.WebControls.ImageButton imgDinero;
 
         /// <summary>
         /// Control imgBanco.
@@ -30,7 +30,7 @@ namespace TpCuatrimestral
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgBanco;
+        protected global::System.Web.UI.WebControls.ImageButton imgBanco;
 
         /// <summary>
         /// Control imgMP.
@@ -39,6 +39,6 @@ namespace TpCuatrimestral
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgMP;
+        protected global::System.Web.UI.WebControls.ImageButton imgMP;
     }
 }

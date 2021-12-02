@@ -10,34 +10,54 @@ namespace negocio
 {
     public class FormaPagoNegocio
     {
-            public List<FormaDePago> listar()
+        public List<FormaDePago> listar()
+        {
+            List<FormaDePago> lista = new List<FormaDePago>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
             {
-                List<FormaDePago> lista = new List<FormaDePago>();
-                AccesoDatos datos = new AccesoDatos();
+                datos.setearConsulta("SELECT Id, Tipo FROM FOP");
+                datos.ejecutarLectura();
 
-                try
+                while (datos.Lector.Read())
                 {
-                    datos.setearConsulta("SELECT Id, Tipo FROM FOP");
-                    datos.ejecutarLectura();
+                    FormaDePago aux = new FormaDePago();
+                    aux.IdFP = (int)datos.Lector["Id"];
+                    aux.Tipo = (string)datos.Lector["Tipo"];
+                    lista.Add(aux);
+                }
 
-                    while (datos.Lector.Read())
-                    {
-                        FormaDePago aux = new FormaDePago();
-                        aux.IdFP = (int)datos.Lector["Id"];
-                        aux.Tipo = (string)datos.Lector["Tipo"];
-                        lista.Add(aux);
-                    }
-
-                    return lista;
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-                finally
-                {
-                    datos.cerrarConexion();
-                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public string buscarFOP(int idFOP)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                FormaDePago FOP = new FormaDePago();
+                datos.setearConsulta("SELECT Tipo FROM FOP WHERE Id = " + @idFOP + "");
+                datos.ejecutarLectura();
+                FOP.Tipo = (string)datos.Lector["Tipo"];
+                return FOP.Tipo;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }
+}

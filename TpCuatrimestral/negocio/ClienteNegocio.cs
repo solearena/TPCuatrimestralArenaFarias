@@ -108,6 +108,32 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public int buscarCliente(string usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT C.Id FROM Cliente AS C INNER JOIN Usuario AS U ON U.Id = C.IdUsuario WHERE U.NombreUsuario = " + @usuario + "");
+                datos.ejecutarLectura();
+                Cliente aux = new Cliente();
+                int cliente = aux.IdCliente;
+                if (datos.Lector.Read())
+                {
+                    aux.IdCliente = (int)datos.Lector["Id"];
+                    
+                    return cliente;
+                }
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
 
