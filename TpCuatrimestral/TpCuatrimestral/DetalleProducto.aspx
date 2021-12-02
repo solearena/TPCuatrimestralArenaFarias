@@ -6,6 +6,20 @@
 
     <div class="container">
         <div >
+            <div class="card text-white bg-dark mb-3" style="max-width: 540px; height: 540px">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                    <asp:Image ID="img" runat="server" src="<%: articulo.UrlImagen.ToString() %>" />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- Enlace para abrir el modal -->
             <asp:ImageButton ID="imgEnvio" runat="server" ImageUrl="~/Content/Img/caja.png"  data-target="#miModal" data-toggle="modal" OnClick="imgEnvio_Click" CssClass="align-content-lg-end"/>
         </div>

@@ -14,7 +14,7 @@ namespace TpCuatrimestral
         public static List<Articulo> listaArticulo { get; set; }
 
         private List<Articulo> listaCarrito;
-
+        public Articulo articulo { get; set; }
         public List<Stock> listaStock { get; set; }
 
         string talle;
@@ -27,6 +27,7 @@ namespace TpCuatrimestral
                 //ddlTalle.Items.Insert(2, new ListItem("L", "L"));
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 StockNegocio stockNegocio = new StockNegocio();
+
                 listaArticulo = negocio.listar();
                 Session.Add("listaArticulo", listaArticulo);
                 if (Session["listaCarrito"] == null)
@@ -36,9 +37,11 @@ namespace TpCuatrimestral
                 }
                 if (Request.QueryString["id"] != null)
                 {
+                    
                     string id = Request.QueryString["id"].ToString();
                     listaCarrito = (List<Articulo>)Session["listaCarrito"];
                     listaArticulo = (List<Articulo>)Session["listaArticulo"];
+                    articulo = (Articulo)Session["articulo"];
                     listaStock = stockNegocio.listar();
                     if(Session["talle"] == null)
                     {
@@ -61,6 +64,7 @@ namespace TpCuatrimestral
                     seleccionado.Stock.Talle = talle;
                     listaCarrito.Add(seleccionado);
                     Session.Add("listaCarrito", listaCarrito);
+                    Session.Add("articulo", articulo);
                     }
                 }
             }
@@ -116,8 +120,11 @@ namespace TpCuatrimestral
                     }
                     //lblStock.Text = buscarStock(idArt, talle).ToString();
                     listaCarrito.Add(listaArticulo.Find(x => x.Id == int.Parse(id)));
+                    Articulo seleccionado = listaArticulo.Find(x => x.Id == int.Parse(id));
+                    Session.Add("listaArticulo", listaArticulo);
                     Session.Add("listaCarrito", listaCarrito);
-
+                    Session.Add("articulo", seleccionado);
+                    Response.Redirect("DetalleProducto");
                 }
 
 
