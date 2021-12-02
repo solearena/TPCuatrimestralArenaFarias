@@ -111,19 +111,17 @@ namespace negocio
         public int buscarCliente(string usuario)
         {
             AccesoDatos datos = new AccesoDatos();
+            Cliente aux = new Cliente();
             try
             {
-                datos.setearConsulta("SELECT C.Id FROM Cliente AS C INNER JOIN Usuario AS U ON U.Id = C.IdUsuario WHERE U.NombreUsuario = " + @usuario + "");
+                datos.setearConsulta("SELECT C.Id FROM Cliente AS C INNER JOIN Usuario AS U ON U.Id = C.IdUsuario WHERE U.NombreUsuario = '" + usuario + "'");
                 datos.ejecutarLectura();
-                Cliente aux = new Cliente();
-                int cliente = aux.IdCliente;
-                if (datos.Lector.Read())
+                while (datos.Lector.Read())
                 {
                     aux.IdCliente = (int)datos.Lector["Id"];
-                    
-                    return cliente;
+
                 }
-                return cliente;
+                return aux.IdCliente;
             }
             catch (Exception ex)
             {

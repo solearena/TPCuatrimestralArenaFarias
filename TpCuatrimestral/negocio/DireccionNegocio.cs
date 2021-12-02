@@ -17,14 +17,14 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("");//agregar consulta de bbdd
+                datos.setearConsulta("SELECT Id, CalleNum, CodigoPostal, Provincia, Pais FROM Direccion");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Direccion aux = new Direccion();
                     aux.IdDireccion = (int)datos.Lector["Id"];
-                    aux.CalleNum = (string)datos.Lector["Calle"];
+                    aux.CalleNum = (string)datos.Lector["CalleNum"];
                     aux.CodPostal = (string)datos.Lector["CodigoPostal"];
                     aux.Provincia = (string)datos.Lector["Provincia"];
                     aux.Pais = (string)datos.Lector["Pais"];
@@ -50,7 +50,8 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Insert Into Direccion(CALLENUM, CODIGOPOSTAL, PROVINCIA, PAIS) Values(@CALLE, @CODIGOPOSTAL, @PROVINCIA, @PAIS)");
+                datos.setearConsulta("Insert Into Direccion(CalleNum, CodigoPostal, Provincia, Pais) Values(@CALLE, @CODIGOPOSTAL, @PROVINCIA, @PAIS)");
+                datos.ejecutarLectura();
                 datos.setearParametro("@CALLE", aux.CalleNum);
                 datos.setearParametro("@CODIGOPOSTAL", aux.CodPostal);
                 datos.setearParametro("@PROVINCIA", aux.Provincia);
@@ -76,12 +77,16 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT D.CalleNum, D.CodigoPostal, D.Pais, D.Provincia FROM Direccion AS D INNER JOIN Cliente AS C ON C.IdDireccion = D.Id INNER JOIN Usuario AS U ON U.Id = C.IdUsuario where U.NombreUsuario = " + @usuario +"");
-                datos.setearParametro("@CALLE", aux.CalleNum);
-                datos.setearParametro("@CODIGOPOSTAL", aux.CodPostal);
-                datos.setearParametro("@PROVINCIA", aux.Provincia);
-                datos.setearParametro("@PAIS", aux.Pais);
-                datos.ejecutarAccion();
+                datos.setearConsulta("SELECT D.Id, D.CalleNum, D.CodigoPostal, D.Pais, D.Provincia FROM Direccion AS D INNER JOIN Cliente AS C ON C.IdDireccion = D.Id INNER JOIN Usuario AS U ON U.Id = C.IdUsuario where U.NombreUsuario = '" + usuario +"'");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    aux.IdDireccion = (int)datos.Lector["Id"];
+                    aux.CalleNum = (string)datos.Lector["CalleNum"];
+                    aux.CodPostal = (string)datos.Lector["CodigoPostal"];
+                    aux.Provincia = (string)datos.Lector["Provincia"];
+                    aux.Pais = (string)datos.Lector["Pais"];
+                }
 
             }
             catch (Exception ex)
@@ -102,11 +107,12 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Direccion SET CalleNum = @CALLE, CodPostal = @CODIGOPOSTAL, Provincia = @PROVINCIA, Pais = @PAIS WHERE IdDireccion = @IdDireccion");
-                datos.setearParametro("@CALLE", aux.CalleNum);
-                datos.setearParametro("@CODIGOPOSTAL", aux.CodPostal);
-                datos.setearParametro("@PROVINCIA", aux.Provincia);
-                datos.setearParametro("@PAIS", aux.Pais);
+                datos.setearConsulta("UPDATE Direccion SET CalleNum = @CalleNum, CodigoPostal = @CodPostal, Provincia = @Provincia, Pais = @Pais WHERE Id = " + aux.IdDireccion +"");
+                
+                datos.setearParametro("@CalleNum", aux.CalleNum);
+                datos.setearParametro("@CodPostal", aux.CodPostal);
+                datos.setearParametro("@Provincia", aux.Provincia);
+                datos.setearParametro("@Pais", aux.Pais);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

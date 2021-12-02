@@ -135,6 +135,42 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public Articulo mostrarArticulo(int idArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Articulo aux = new Articulo();
+            try
+            {
+                datos.setearConsulta("SELECT A.Id, A.Nombre, A.Descripcion, A.Precio, A.UrlImagen, A.Estado, C.Id AS IdCategoria, C.Descripcion AS Categoria FROM Articulo AS A INNER JOIN Categoria AS C ON C.Id = A.IdCategoria where A.Estado=1 AND A.Id = " + idArticulo + "");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+                    if (!(datos.Lector["UrlImagen"] is DBNull))
+                    {
+                        aux.UrlImagen = (string)datos.Lector["UrlImagen"];
+                    }
+                    aux.Estado = (bool)datos.Lector["Estado"];
+                    aux.DescripcionCategoria = new Categoria();
+                    aux.IdCategoria = new Categoria();
+                    aux.IdCategoria.Id = (int)datos.Lector["IdCategoria"];
+                    aux.DescripcionCategoria.Descripcion = (string)datos.Lector["Categoria"];
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return aux;
+        }
         public List<Articulo> listar2()
         {
             List<Articulo> lista = new List<Articulo>();

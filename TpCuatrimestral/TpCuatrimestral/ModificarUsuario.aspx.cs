@@ -11,7 +11,6 @@ namespace TpCuatrimestral
 {
     public partial class ModificarUsuario : System.Web.UI.Page
     {
-        Direccion direccion = new Direccion();
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Validate();
@@ -19,58 +18,22 @@ namespace TpCuatrimestral
             {
                 return;
             }
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "Debes loguearte para ingresar");
+                Response.Redirect("Error.aspx", false);
+            }
             else
             {
                 Usuario usuario;
-                Direccion direccion = new Direccion();
+                
                 UsuarioNegocio usuarionegocio = new UsuarioNegocio();
                 DireccionNegocio direccionNegocio = new DireccionNegocio();
-                
-            //    try
-            //    {
-            //        usuario = (usuario)session["usuario"];
-            //        //direccion = direccionnegocio.buscardireccion(usuario.nombreusuario);
-            //        if (txtdireccion.text == "")
-            //        {
-            //            direccion.callenum = direccion.callenum;
-            //        }
-            //        else
-            //        {
-            //            direccion.callenum = txtdireccion.text;
-            //        }
-            //        if (txtcodpostal.text == "")
-            //        {
-            //            direccion.codpostal = direccion.codpostal;
-            //        }
-            //        else
-            //        {
-            //            direccion.codpostal = txtcodpostal.text;
-            //        }
-            //        if (txtprovincia.text == "")
-            //        {
-            //            direccion.provincia = direccion.provincia;
-            //        }
-            //        else
-            //        {
-            //            direccion.provincia = txtprovincia.text;
-            //        }
-            //        if (txtpais.text == "")
-            //        {
-            //            direccion.pais = direccion.pais;
-            //        }
-            //        else
-            //        {
-            //            direccion.pais = txtpais.text;
-            //        } 
-            //        direccionnegocio.agregar(direccion);
-            //        response.redirect("default.aspx");
-            //    }
-            //    catch (exception ex)
-            //    {
 
-            //        throw ex;
-            //    }
-
+                usuario = (Usuario)Session["usuario"];
+                Direccion direccion = new Direccion();
+                direccion = direccionNegocio.buscarDireccion(usuario.NombreUsuario);
+                Session.Add("direccion", direccion);
             }
        }
 
@@ -82,9 +45,34 @@ namespace TpCuatrimestral
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             DireccionNegocio negocio = new DireccionNegocio();
+            Direccion direccion = new Direccion();
+            direccion = (Direccion)Session["direccion"];
+            try
+            {
+                if (txtdireccion.Text != "")
+                {
+                    direccion.CalleNum = txtdireccion.Text;
+                }
+                if (txtcodpostal.Text != "")
+                {
+                    direccion.CodPostal = txtcodpostal.Text;
+                }
+                if (txtprovincia.Text != "")
+                {
+                    direccion.Provincia = txtprovincia.Text;
+                }
+                if (txtpais.Text != "")
+                {
+                    direccion.Pais = txtpais.Text;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             negocio.modificar(direccion);
             Response.Write("<script language=javascript>alert('Se ha modificado con exito!');</script>");
-            Response.Redirect("Default.aspx");
+            //Response.Redirect("Default.aspx");
         }
     }
 }

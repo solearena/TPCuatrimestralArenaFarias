@@ -89,6 +89,7 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Img\banco.png" />
     <Content Include="Content\Img\bote-de-basura.png" />
+    <Content Include="Content\Img\caja.png" />
     <Content Include="Content\Img\carrito-de-compras.png" />
     <Content Include="Content\Img\Dimensiones personalizadas 27x27 px.png" />
     <Content Include="Content\Img\Dimensiones personalizadas 60x60 px.png" />

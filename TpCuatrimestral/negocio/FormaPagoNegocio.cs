@@ -45,14 +45,14 @@ namespace negocio
             try
             {
                 FormaDePago FOP = new FormaDePago();
-                datos.setearConsulta("SELECT Tipo FROM FOP WHERE Id = " + @idFOP + "");
+                datos.setearConsulta("SELECT Tipo FROM FOP WHERE Id = " + idFOP + "");
                 datos.ejecutarLectura();
                 FOP.Tipo = (string)datos.Lector["Tipo"];
                 return FOP.Tipo;
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {
