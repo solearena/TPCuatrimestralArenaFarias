@@ -16,7 +16,9 @@ namespace negocio
         {
             server = new SmtpClient();
             server.Credentials = new NetworkCredential("nebula.nebula.shop@gmail.com", "Nebula2021");
+            server.DeliveryMethod = SmtpDeliveryMethod.Network;
             server.EnableSsl = true;
+            server.UseDefaultCredentials = false;
             server.Port = 587;
             server.Host = "smtp.gmail.com";
         }
@@ -24,7 +26,7 @@ namespace negocio
         public void armarCorreo(string emailDestino, string asunto, string cuerpo)
         {
             email = new MailMessage();
-            email.From = new MailAddress("noresponder@nebula.com.ar");
+            email.From = new MailAddress("noresponder@nebula.com.ar","Nebula Shop");
             email.To.Add(emailDestino);
             email.Subject = asunto;
             email.IsBodyHtml = true;

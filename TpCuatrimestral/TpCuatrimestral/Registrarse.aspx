@@ -151,7 +151,7 @@
                         </fieldset>
                         <br />
                         <fieldset>
-                            <legend>Datos de Login</legend>
+                            <legend >Datos de Login</legend>
                             <asp:Table runat="server">
                                 <asp:TableRow>
                                     <asp:TableCell>

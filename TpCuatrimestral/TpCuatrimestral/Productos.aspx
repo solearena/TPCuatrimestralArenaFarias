@@ -11,15 +11,19 @@
             <% foreach (dominio.Articulo item in listaArticulo )
                 { %>
                 <div class="col">
-                    <div class="card h-100" style="width: 20rem; border: solid 3px black">
-                        <img src="<% = item.UrlImagen %>"" class="card-img-top" alt="...">
+                    <div class="card h-100" style="width:400px; height:400px;border: solid 3px black">
+                        <div align="center">
+                            <img src="<% = item.UrlImagen %>"" class="card-img-top" alt="..." style="width:350px; height:350px">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title"><% = item.Nombre %></h5>
                             <p class="card-text"><%= item.Descripcion %></p>
-                            <h6 class="card-text"> $<% = item.Precio %></h6>
-                            <a href="DetalleProducto.aspx?id=<%:item.Id%>" class ="btn btn-danger">COMPRAR</a>
+                            <h6 class="card-text"> $<% = item.Precio %></h6>   
                             <asp:Label ID="Label1" runat="server" Text="Stock" Visible ="false"></asp:Label>
                         </div>
+                        <footer align="center">
+                            <a href="DetalleProducto.aspx?id=<%:item.Id%>" class ="btn btn-danger" align="right">COMPRAR</a>
+                        </footer>
                     </div>
                 </div>
             <% } %>

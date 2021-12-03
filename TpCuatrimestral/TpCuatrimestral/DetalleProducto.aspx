@@ -9,7 +9,7 @@
                 <table>
                     <tr>
                         <td>
-                            <asp:Image ID="img" runat="server"  />
+                            <asp:Image ID="img" runat="server" style="width:500px; height:500px;" />
                         </td>
                         <td style="text-align:center">
                             <div>
@@ -32,7 +32,7 @@
                             </div>
                             <div>
                                  <!-- Enlace para abrir el modal -->
-                                 <asp:ImageButton ID="imgEnvio" runat="server" ImageUrl="~/Content/Img/caja.png"  data-target="#miModal" data-toggle="modal" OnClick="imgEnvio_Click" CssClass="align-content-lg-end"/>
+                                 <asp:ImageButton ID="imgEnvio" runat="server" ImageUrl="~/Content/Img/caja.png"  data-target="#miModal" data-toggle="modal" OnClick="imgEnvio_Click" CssClass="align-content-lg-end" />
                             </div>
                         </td>
                     </tr>

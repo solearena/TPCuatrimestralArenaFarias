@@ -3,10 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="wrapper" >
-        <div class="formcontent">
+    <br />
+    <br />
+    <br />
+    <div class="wrapper" align="center"  >
+        <div class="formcontent" style="width:550px; height:550px;">
                 <div class="form-control">
-                    <div class="row">
+                    <div class="row" align="center">
                         <asp:Label class="h2" ID="lblBienvenida" runat="server" Text="BIENVENIDO/A NEBULA"></asp:Label>
                     </div>
                     <div>
