@@ -24,9 +24,9 @@
                             <div>
                                 <asp:Label ID="lblPrecio" runat="server" Text="PRECIO"></asp:Label>
                             </div>
-                                <input type="text" value="0" id="item" name="item">
-                                <button OnClick="incrementar()">+</button>
-                                <button OnClick="decrementar()">-</button>
+                                <asp:Button ID="btnRestar" runat="server" Text="-" OnClick="btnRestar_Click"/>
+                                <asp:TextBox ID="txtCantidad" runat="server" value="1" style="width:40px" CssClass="text-center" ></asp:TextBox>
+                                <asp:Button ID="btnSumar" runat="server" Text="+" OnClick="btnSumar_Click"/>
                             <div>
                                 <asp:Button ID="btnCarrito" runat="server" CssClass="btn btn-danger" Text="AGREGAR AL CARRITO" OnClick="btnCarrito_Click"/>
                             </div>
@@ -95,15 +95,6 @@
                 $('#miModal').removeClass('d-block');
                 $('#miModal').addClass('d-none');
             }
-        }
-        function incrementar() {
-            valor = document.getElementById("item");
-            if (valor.value < 10) valor.value++;
-        }
-
-        function decrementar() {
-            valor = document.getElementById("item");
-            if (valor.value > 01) valor.value--;
         }
     </script>
 </asp:Content>

@@ -35,10 +35,10 @@ namespace TpCuatrimestral
             foreach (dominio.Stock item in listaStock) 
             {
                 StockNegocio negocio = new StockNegocio();
-                negocio.descontarStock(listaStock[i]);
+                negocio.descontarStock(listaStock[i], 1);
                 i++;
             }
-            i = 0;
+            Session["listaCarrito"] = null;
         }
 
         protected void imgDinero_Click(object sender, ImageClickEventArgs e)
@@ -47,10 +47,10 @@ namespace TpCuatrimestral
             foreach(dominio.Stock  item in listaStock)
             {
                 StockNegocio negocio = new StockNegocio();
-                negocio.descontarStock(listaStock[i]);
+                negocio.descontarStock(listaStock[i], 1);
                 i++;
             }
-            i = 0;
+            Session["listaCarrito"] = null;
         }
 
         protected void imgMP_Click(object sender, ImageClickEventArgs e)
@@ -59,10 +59,10 @@ namespace TpCuatrimestral
             foreach (dominio.Stock item in listaStock)
             {
                 StockNegocio negocio = new StockNegocio();
-                negocio.descontarStock(listaStock[i]);
+                negocio.descontarStock(listaStock[i], 1);
                 i++;
             }
-            i = 0;
+            Session["listaCarrito"] = null;
         }
     }
 }

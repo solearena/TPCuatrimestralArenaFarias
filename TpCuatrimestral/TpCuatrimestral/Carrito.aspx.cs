@@ -17,7 +17,7 @@ namespace TpCuatrimestral
         {
             StockNegocio negocio = new StockNegocio();
             int stock = 0;
-            dgvCarrito.DataSource = Session["listaCarrito"];
+            dgvCarrito.DataSource = Session["listaCarrito2"];
             dgvCarrito.DataBind();
             listaCarrito = (List<Articulo>)Session["listaCarrito"];
             decimal total = 0;
@@ -49,9 +49,9 @@ namespace TpCuatrimestral
         protected void btnPagar_Click(object sender, EventArgs e)
         {
 
-            Session["listaCarrito"] = null;
-            dgvCarrito.DataSource = Session["listaCarrito"];
-            dgvCarrito.DataBind();
+            
+            //dgvCarrito.DataSource = Session["listaCarrito"];
+            //dgvCarrito.DataBind();
             
             Response.Redirect("Pagar.aspx");
         }

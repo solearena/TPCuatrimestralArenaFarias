@@ -182,12 +182,12 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
-        public void descontarStock(Stock aux)
+        public void descontarStock(Stock aux, int cantidad)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("UPDATE Stock SET StockArticulo = @StockArticulo - '1' WHERE IdArticulo = @IdArticulo AND Talle = @Talle");
+                datos.setearConsulta("UPDATE Stock SET StockArticulo = @StockArticulo - " + cantidad + "WHERE IdArticulo = @IdArticulo AND Talle = @Talle");
                 datos.setearParametro("@IdArticulo", aux.IdArticulo.Id);
                 datos.setearParametro("@StockArticulo", aux.StockArticulo);
                 datos.setearParametro("@Talle", aux.Talle);
@@ -195,7 +195,6 @@ namespace negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally

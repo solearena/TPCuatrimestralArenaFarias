@@ -13,12 +13,13 @@ namespace TpCuatrimestral
     {
         private List<Articulo> listaCarrito;
 
-        private List<Carrito> listaCarrito2;
+        private List<ElementoCarrito> listaCarrito2;
 
         public List<Articulo> listaArticulo { get; set; }
 
-        private Articulo articulo = null;
-        private ElementoCarrito carrito = new ElementoCarrito();
+        //private Articulo articulo = null;
+        public Articulo articulo { get; set; }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,14 +31,16 @@ namespace TpCuatrimestral
                 Articulo articulo = new Articulo();
                 if (Session["listaCarrito"] == null)
                 {
-                    listaCarrito2 = new List<Carrito>();
-                    Session.Add("listaCarrito", listaCarrito2);
+                    listaCarrito = new List<Articulo>();
+                    listaCarrito2 = new List<ElementoCarrito>();
+                    Session.Add("listaCarrito", listaCarrito);
+                    Session.Add("listaCarrito2", listaCarrito2);
                 }
                 if (Request.QueryString["Id"] != null)
                 {
                     int Id = Convert.ToInt32(this.Request.QueryString.Get(0));
-                    listaCarrito2 = (List<Carrito>)Session["listaCarrito"];
-
+                    listaCarrito = (List<Articulo>)Session["listaCarrito"];
+                    listaCarrito2 = (List<ElementoCarrito>)Session["listaCarrito2"];
                     if(Id != 0)
                     {
                         this.articulo = articulo;
@@ -49,19 +52,15 @@ namespace TpCuatrimestral
                         ddlTalle.DataSource = stockNegocio.listarTalles(Id);
                         ddlTalle.DataBind();
                     }
-                    ElementoCarrito elemento = new ElementoCarrito();
-                    elemento.Talle = ddlTalle.SelectedValue.ToString();
-                    elemento.IdArticulo.Id = articulo.Id;
-                    //elemento.Cantidad = 
-
+                    
 
                     /*Articulo seleccionado = new Articulo();
                     seleccionado.Stock = new Stock();
                     seleccionado.Stock.Talle = ddlTalle.SelectedValue.ToString();
                     listaCarrito.Add(articulo);
-                    listaCarrito.Add(seleccionado);
-                    Session.Add("listaCarrito", listaCarrito);*/
-
+                    listaCarrito.Add(seleccionado);*/
+                    Session.Add("listaCarrito", listaCarrito);
+                    Session.Add("listaCarrito2", listaCarrito2);
                 }
                 
                 
@@ -110,7 +109,48 @@ namespace TpCuatrimestral
 
         protected void btnCarrito_Click(object sender, EventArgs e)
         {
+            if(Request.QueryString["Id"] == null)
+            {
+                Session.Add("error", "Debes seleccionar un producto.");
+                Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                int Id = Convert.ToInt32(Request.QueryString["Id"].ToString());
+                ElementoCarrito elemento = new ElementoCarrito();
+                elemento.Talle = ddlTalle.SelectedValue.ToString();
+                elemento.IdArticulo = new Articulo();
+                elemento.IdArticulo.Id = Id;
+                if (txtCantidad.Text == "")
+                {
+                    elemento.Cantidad = 1;
+                }
+                else
+                {
+                    elemento.Cantidad = int.Parse(txtCantidad.Text);
+                }
+                //Me trae el elemento pero no me lo guarda en la lista
+                listaCarrito2 = (List<ElementoCarrito>)Session["listaCarrito2"];
+                listaCarrito2.Add(elemento);
+                Session.Add("listaCarrito2", listaCarrito2);
+            }
             
+        }
+
+        protected void btnRestar_Click(object sender, EventArgs e)
+        {
+            if(Convert.ToInt32(txtCantidad.Text) > 0)
+            {
+                txtCantidad.Text = (Convert.ToInt32(txtCantidad.Text) - 1).ToString();
+            }
+        }
+
+        protected void btnSumar_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(txtCantidad.Text) < 10)
+            {
+                txtCantidad.Text = (Convert.ToInt32(txtCantidad.Text) + 1).ToString();
+            }
         }
     }
 }
