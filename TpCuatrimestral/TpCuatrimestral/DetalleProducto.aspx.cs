@@ -29,7 +29,7 @@ namespace TpCuatrimestral
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 StockNegocio stockNegocio = new StockNegocio();
                 Articulo articulo = new Articulo();
-                if (Session["listaCarrito"] == null)
+                if (Session["listaCarrito2"] == null)
                 {
                     listaCarrito = new List<Articulo>();
                     listaCarrito2 = new List<ElementoCarrito>();
@@ -48,7 +48,7 @@ namespace TpCuatrimestral
                         img.ImageUrl = articulo.UrlImagen.ToString();
                         lblNombre.Text = articulo.Nombre;
                         lblDescripcion.Text = articulo.Descripcion;
-                        lblPrecio.Text = articulo.Precio.ToString();
+                        lblPrecio.Text = '$' + articulo.Precio.ToString();
                         ddlTalle.DataSource = stockNegocio.listarTalles(Id);
                         ddlTalle.DataBind();
                     }
@@ -109,13 +109,14 @@ namespace TpCuatrimestral
 
         protected void btnCarrito_Click(object sender, EventArgs e)
         {
-            if(Request.QueryString["Id"] == null)
+            if (Request.QueryString["Id"] == null)
             {
                 Session.Add("error", "Debes seleccionar un producto.");
                 Response.Redirect("Error.aspx", false);
             }
             else
             {
+                StockNegocio stockNegocio = new StockNegocio();
                 int Id = Convert.ToInt32(Request.QueryString["Id"].ToString());
                 ElementoCarrito elemento = new ElementoCarrito();
                 Articulo articulo = new Articulo();
@@ -133,11 +134,19 @@ namespace TpCuatrimestral
                 {
                     elemento.Cantidad = int.Parse(txtCantidad.Text);
                 }
-                elemento.TotalParcial = elemento.Cantidad * articulo.Precio;
-                //Me trae el elemento pero no me lo guarda en la lista
-                listaCarrito2 = (List<ElementoCarrito>)Session["listaCarrito2"];
-                listaCarrito2.Add(elemento);
-                Session.Add("listaCarrito2", listaCarrito2);
+                int stockDisponible = 0;
+                stockDisponible = stockNegocio.buscarStock(Id, elemento.Talle);
+                elemento.PrecioUnitario = articulo.Precio;
+                if (stockDisponible < elemento.Cantidad)
+                {
+                    Response.Write("<script language=javascript>alert('STOCK INSUFICIENTE. Seleccione una cantidad menor.');</script>");
+                }
+                else
+                {
+                    listaCarrito2 = (List<ElementoCarrito>)Session["listaCarrito2"];
+                    listaCarrito2.Add(elemento);
+                    Session.Add("listaCarrito2", listaCarrito2);
+                }
             }
             
         }

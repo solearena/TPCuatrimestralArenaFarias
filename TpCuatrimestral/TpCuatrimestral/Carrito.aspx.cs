@@ -19,7 +19,7 @@ namespace TpCuatrimestral
             int stock = 0;
             dgvCarrito.DataSource = Session["listaCarrito2"];
             dgvCarrito.DataBind();
-            listaCarrito = (List<Articulo>)Session["listaCarrito"];
+            //listaCarrito = (List<Articulo>)Session["listaCarrito"];
             decimal total = 0;
             //for (int i = 0; i < dgvcarrito.rows.count; i++)
             //{
@@ -32,12 +32,12 @@ namespace TpCuatrimestral
             //    listastock.add(aux);
             //}
             //session.add("listastock",listastock);
-            //for (int i = 0; i < dgvcarrito.rows.count; i++)
-            //{
-            //    total += convert.todecimal(dgvcarrito.rows[i].cells[1].text);
-            //}
-            //lbltotal.text = convert.tostring(total);
-            
+            for (int i = 0; i < dgvCarrito.Rows.Count; i++)
+            {
+                total += (Convert.ToDecimal(dgvCarrito.Rows[i].Cells[2].Text)* Convert.ToDecimal(dgvCarrito.Rows[i].Cells[3].Text));
+            }
+            lblTotal.Text = Convert.ToString(total);
+            Session.Add("totalAPagar", lblTotal.Text);
         }
 
         protected void dgvCarrito_SelectedIndexChanged(object sender, EventArgs e)
