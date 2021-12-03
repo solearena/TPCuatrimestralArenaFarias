@@ -5,24 +5,42 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
     <div class="container">
-        <div >
-            <div class="card text-white bg-dark mb-3" style="max-width: 540px; height: 540px">
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                    <asp:Image ID="img" runat="server" src="<%: articulo.UrlImagen.ToString() %>" />
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                  </div>
-                </div>
-              </div>
+            <div class="table" style="max-width: 540px; height: 540px">
+                <table>
+                    <tr>
+                        <td>
+                            <asp:Image ID="img" runat="server"  />
+                        </td>
+                        <td style="text-align:center">
+                            <div>
+                                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE"></asp:Label>
+                            </div>
+                            <div>
+                                <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION"></asp:Label>
+                            </div>
+                            <div>
+                                <asp:DropDownList ID="ddlTalle" runat="server"></asp:DropDownList>
+                            </div>
+                            <div>
+                                <asp:Label ID="lblPrecio" runat="server" Text="PRECIO"></asp:Label>
+                            </div>
+                                <input type="text" value="0" id="item" name="item">
+                                <button OnClick="incrementar()">+</button>
+                                <button OnClick="decrementar()">-</button>
+                            <div>
+                                <asp:Button ID="btnCarrito" runat="server" CssClass="btn btn-danger" Text="AGREGAR AL CARRITO" OnClick="btnCarrito_Click"/>
+                            </div>
+                            <div>
+                                 <!-- Enlace para abrir el modal -->
+                                 <asp:ImageButton ID="imgEnvio" runat="server" ImageUrl="~/Content/Img/caja.png"  data-target="#miModal" data-toggle="modal" OnClick="imgEnvio_Click" CssClass="align-content-lg-end"/>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+                    
+                
             </div>
-            <!-- Enlace para abrir el modal -->
-            <asp:ImageButton ID="imgEnvio" runat="server" ImageUrl="~/Content/Img/caja.png"  data-target="#miModal" data-toggle="modal" OnClick="imgEnvio_Click" CssClass="align-content-lg-end"/>
-        </div>
     </div>
     <div class="modal-fade modal-dialog-scrollable position-absolute top-50 start-50 translate-middle d-none" tabindex="-1" role="dialog" id="miModal">
         <div id="fancy-tiempo-costos" class="fancy-pop" role="document">
@@ -77,6 +95,15 @@
                 $('#miModal').removeClass('d-block');
                 $('#miModal').addClass('d-none');
             }
+        }
+        function incrementar() {
+            valor = document.getElementById("item");
+            if (valor.value < 10) valor.value++;
+        }
+
+        function decrementar() {
+            valor = document.getElementById("item");
+            if (valor.value > 01) valor.value--;
         }
     </script>
 </asp:Content>

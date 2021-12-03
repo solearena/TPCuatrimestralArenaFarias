@@ -15,6 +15,8 @@ namespace TpCuatrimestral
         List<Stock> listaStock = new List<Stock>();
         protected void Page_Load(object sender, EventArgs e)
         {
+            StockNegocio negocio = new StockNegocio();
+            int stock = 0;
             dgvCarrito.DataSource = Session["listaCarrito"];
             dgvCarrito.DataBind();
             listaCarrito = (List<Articulo>)Session["listaCarrito"];
@@ -22,17 +24,20 @@ namespace TpCuatrimestral
             for (int i = 0; i < dgvCarrito.Rows.Count; i++)
             {
                 Stock aux = new Stock();
-                aux.StockArticulo = listaCarrito[i].Stock.StockArticulo;
                 aux.Talle = listaCarrito[i].Stock.Talle;
                 aux.IdArticulo = new Articulo();
                 aux.IdArticulo.Id = listaCarrito[i].Id;
+                stock = negocio.buscarStock(aux.IdArticulo.Id,aux.Talle);
+                aux.StockArticulo = stock;
                 listaStock.Add(aux);
             }
+            Session.Add("listaStock",listaStock);
             for (int i = 0; i < dgvCarrito.Rows.Count; i++)
             {
                 total += Convert.ToDecimal(dgvCarrito.Rows[i].Cells[1].Text);
             }
             lblTotal.Text = Convert.ToString(total);
+            
         }
 
         protected void dgvCarrito_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,15 +49,10 @@ namespace TpCuatrimestral
         protected void btnPagar_Click(object sender, EventArgs e)
         {
 
-            for (int i = 0; i < dgvCarrito.Rows.Count; i++)
-            {
-                StockNegocio negocio = new StockNegocio();
-                negocio.descontarStock(listaStock[i]);
-            }
             Session["listaCarrito"] = null;
             dgvCarrito.DataSource = Session["listaCarrito"];
-
             dgvCarrito.DataBind();
+            
             Response.Redirect("Pagar.aspx");
         }
     }

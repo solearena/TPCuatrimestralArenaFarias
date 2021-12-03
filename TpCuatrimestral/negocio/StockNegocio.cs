@@ -113,6 +113,31 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+        public int buscarStock(int id,string talle)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Stock stock = new Stock();
+            try
+            {
+                datos.setearConsulta("SELECT StockArticulo FROM STOCK WHERE IdArticulo ="+ id +" AND Talle = '"+ talle +"'");
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    stock.StockArticulo = (int)datos.Lector["StockArticulo"];
+                }
+
+                return stock.StockArticulo;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public List<Articulo> listar2()
         {
             List<Articulo> lista = new List<Articulo>();

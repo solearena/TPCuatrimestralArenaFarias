@@ -8,17 +8,17 @@
 
     <div class="form-group text-center">
         <div>
-            <asp:ImageButton ID="imgDinero" runat="server" ImageUrl="~/Content/Img/dinero-en-efectivo.png" />
+            <asp:ImageButton ID="imgDinero" runat="server" ImageUrl="~/Content/Img/dinero-en-efectivo.png" OnClick="imgDinero_Click" />
             <b>Pago en efectivo: </b> Al momento de recibir el producto, se hará efectivo el pago del mismo.
         </div>
         <br />
         <div>
-            <asp:ImageButton ID="imgBanco" ImageUrl="~/Content/Img/banco.png" runat="server" />
+            <asp:ImageButton ID="imgBanco" ImageUrl="~/Content/Img/banco.png" runat="server" OnClick="imgBanco_Click" />
             <b>Transferencia Bancaria: </b> Pago offline. Luego de efectuar tu pedido completo hasta el final, hace la transferencia desde tu home banking
         </div>
         <br />
         <div>
-            <asp:ImageButton ID="imgMP" ImageUrl="~/Content/Img/ML.png" runat="server" />
+            <asp:ImageButton ID="imgMP" ImageUrl="~/Content/Img/ML.png" runat="server" OnClick="imgMP_Click" />
             <b>Mercado Pago</b>
         </div>
         <br />

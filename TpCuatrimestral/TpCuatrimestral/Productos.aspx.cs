@@ -22,9 +22,7 @@ namespace TpCuatrimestral
         {
             if (!IsPostBack)
             {
-                //ddlTalle.Items.Insert(0, new ListItem("S", "S"));
-                //ddlTalle.Items.Insert(1, new ListItem("M", "M"));
-                //ddlTalle.Items.Insert(2, new ListItem("L", "L"));
+
                 ArticuloNegocio negocio = new ArticuloNegocio();
                 StockNegocio stockNegocio = new StockNegocio();
 
@@ -41,8 +39,6 @@ namespace TpCuatrimestral
                     string id = Request.QueryString["id"].ToString();
                     listaCarrito = (List<Articulo>)Session["listaCarrito"];
                     listaArticulo = (List<Articulo>)Session["listaArticulo"];
-                    articulo = (Articulo)Session["articulo"];
-                    listaStock = stockNegocio.listar();
                     if(Session["talle"] == null)
                     {
                         Session.Add("talle", 'S');
@@ -52,7 +48,6 @@ namespace TpCuatrimestral
                     int idArt = int.Parse(id);
                     int cantidad;
                     cantidad = buscarStock(idArt, talle);
-                    //lblStock.Text = cantidad.ToString();
                     if (cantidad == 0)
                     {
                         Response.Write("<script language=javascript>alert('SIN STOCK');</script>");
@@ -64,7 +59,6 @@ namespace TpCuatrimestral
                     seleccionado.Stock.Talle = talle;
                     listaCarrito.Add(seleccionado);
                     Session.Add("listaCarrito", listaCarrito);
-                    Session.Add("articulo", articulo);
                     }
                 }
             }
@@ -88,12 +82,13 @@ namespace TpCuatrimestral
         {
             DropDownList ddl = sender as DropDownList;
             
-            talle = ddlTalle.SelectedItem.Value;
-            Session.Add("talle", talle);
+            /*talle = ddlTalle.SelectedItem.Value;
+            Session.Add("talle", talle); VER SI SACAR*/
         }
 
         protected void btnElegir_Click(object sender, EventArgs e)
         {
+            //ver de borrar
             if (!IsPostBack)
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
@@ -111,7 +106,7 @@ namespace TpCuatrimestral
                     listaCarrito = (List<Articulo>)Session["listaCarrito"];
                     listaArticulo = (List<Articulo>)Session["listaArticulo"];
 
-                    string talle = ddlTalle.SelectedItem.Value;
+                    //string talle = ddlTalle.SelectedItem.Value;
                     int idArt = int.Parse(id);
                     if (buscarStock(idArt, talle) == 0)
                     {
