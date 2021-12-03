@@ -21,22 +21,22 @@ namespace TpCuatrimestral
             dgvCarrito.DataBind();
             listaCarrito = (List<Articulo>)Session["listaCarrito"];
             decimal total = 0;
-            for (int i = 0; i < dgvCarrito.Rows.Count; i++)
-            {
-                Stock aux = new Stock();
-                aux.Talle = listaCarrito[i].Stock.Talle;
-                aux.IdArticulo = new Articulo();
-                aux.IdArticulo.Id = listaCarrito[i].Id;
-                stock = negocio.buscarStock(aux.IdArticulo.Id,aux.Talle);
-                aux.StockArticulo = stock;
-                listaStock.Add(aux);
-            }
-            Session.Add("listaStock",listaStock);
-            for (int i = 0; i < dgvCarrito.Rows.Count; i++)
-            {
-                total += Convert.ToDecimal(dgvCarrito.Rows[i].Cells[1].Text);
-            }
-            lblTotal.Text = Convert.ToString(total);
+            //for (int i = 0; i < dgvcarrito.rows.count; i++)
+            //{
+            //    stock aux = new stock();
+            //    aux.talle = listacarrito[i].stock.talle;
+            //    aux.idarticulo = new articulo();
+            //    aux.idarticulo.id = listacarrito[i].id;
+            //    stock = negocio.buscarstock(aux.idarticulo.id,aux.talle);
+            //    aux.stockarticulo = stock;
+            //    listastock.add(aux);
+            //}
+            //session.add("listastock",listastock);
+            //for (int i = 0; i < dgvcarrito.rows.count; i++)
+            //{
+            //    total += convert.todecimal(dgvcarrito.rows[i].cells[1].text);
+            //}
+            //lbltotal.text = convert.tostring(total);
             
         }
 

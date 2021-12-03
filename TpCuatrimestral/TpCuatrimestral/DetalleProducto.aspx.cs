@@ -118,9 +118,13 @@ namespace TpCuatrimestral
             {
                 int Id = Convert.ToInt32(Request.QueryString["Id"].ToString());
                 ElementoCarrito elemento = new ElementoCarrito();
+                Articulo articulo = new Articulo();
+                this.articulo = articulo;
+                Cargar(Id);
                 elemento.Talle = ddlTalle.SelectedValue.ToString();
                 elemento.IdArticulo = new Articulo();
                 elemento.IdArticulo.Id = Id;
+                elemento.IdArticulo.Nombre = articulo.Nombre;
                 if (txtCantidad.Text == "")
                 {
                     elemento.Cantidad = 1;
@@ -129,6 +133,7 @@ namespace TpCuatrimestral
                 {
                     elemento.Cantidad = int.Parse(txtCantidad.Text);
                 }
+                elemento.TotalParcial = elemento.Cantidad * articulo.Precio;
                 //Me trae el elemento pero no me lo guarda en la lista
                 listaCarrito2 = (List<ElementoCarrito>)Session["listaCarrito2"];
                 listaCarrito2.Add(elemento);

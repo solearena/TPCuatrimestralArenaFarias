@@ -7,15 +7,13 @@
     </div>
     <asp:GridView ID="dgvCarrito" runat="server" CssClass="table" AutoGenerateColumns="false" OnSelectedIndexChanged="dgvCarrito_SelectedIndexChanged">
         <Columns>
-             <%--<asp:BoundField DataField="Nombre" HeaderText="Nombre Producto" />
-            <asp:BoundField DataField="Precio" HeaderText="Precio" />--%>
-            
-             <asp:BoundField DataField="Talle" HeaderText="Talle" />
+            <%--<asp:BoundField DataField="Nombre" HeaderText="Nombre Producto" />--%>   
+            <asp:BoundField DataField="IdArticulo.Nombre" HeaderText="Nombre" />
+            <asp:BoundField DataField="Talle" HeaderText="Talle" />
             <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
+            <asp:BoundField DataField="TotalParcial" HeaderText="Precio" />
             <asp:CommandField ShowSelectButton="true"/>
             <asp:CommandField ShowDeleteButton="true"/>
-
-
         </Columns>
     </asp:GridView>
     <div class="text-end fw-bold">
