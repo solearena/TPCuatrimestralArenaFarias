@@ -54,5 +54,27 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void guardar(ElementoCarrito aux)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO ELEMENTOCARRITO(IDARTICULO,CANTIDAD,TALLE,PRECIOUNITARIO) VALUES(@IdArticulo,@Cantidad,@Talle,@PrecioUnitario)");
+                datos.setearParametro("@IdArticulo",aux.IdArticulo);
+                datos.setearParametro("@Cantidad", aux.Cantidad);
+                datos.setearParametro("@Talle", aux.Talle);
+                datos.setearParametro("@PrecioUnitario", aux.PrecioUnitario);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

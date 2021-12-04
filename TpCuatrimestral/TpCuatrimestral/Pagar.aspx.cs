@@ -32,29 +32,32 @@ namespace TpCuatrimestral
             int i = 0;
             string FOP = "Transferencia Bancaria";
             ClienteNegocio clienteNegocio = new ClienteNegocio();
-            string nombreUsuario;
-            nombreUsuario = (string)Session["usuario"];
+            Usuario nombreUsuario;
+            nombreUsuario = (Usuario)Session["usuario"];
             int idCliente;
-            idCliente = clienteNegocio.buscarCliente(nombreUsuario);
+            idCliente = clienteNegocio.buscarCliente(nombreUsuario.NombreUsuario);
 
-            int total;
-            total = (int)Session["totalAPagar"];
+            string total;
+
+            total = (string)Session["totalAPagar"];
 
             VentaNegocio ventaNegocio = new VentaNegocio();
             Venta aux = new Venta();
+            aux.IdCliente = new Cliente();
             aux.IdCliente.IdCliente = idCliente;
+            aux.FOP = new FormaDePago();
             aux.FOP.Tipo = FOP;
-            aux.Total = total;
+            aux.Total = decimal.Parse(total);
             ventaNegocio.guardar(aux);
 
             listaCarrito = (List<ElementoCarrito>)Session["listaCarrito2"];
-            foreach (dominio.Stock item in listaStock) 
+
+            foreach (dominio.ElementoCarrito item in listaCarrito)
             {
                 StockNegocio negocio = new StockNegocio();
                 negocio.descontarStock(listaCarrito[i].IdArticulo.Id, listaCarrito[i].Cantidad, listaCarrito[i].Talle);
                 i++;
             }
-
             Session["listaCarrito2"] = null;
         }
 
@@ -62,7 +65,6 @@ namespace TpCuatrimestral
         {
             int i = 0;
             string FOP = "Efectivo";
-
             ClienteNegocio clienteNegocio = new ClienteNegocio();
             Usuario nombreUsuario;
             nombreUsuario = (Usuario)Session["usuario"];
@@ -99,23 +101,27 @@ namespace TpCuatrimestral
             string FOP = "Mercado Pago";
 
             ClienteNegocio clienteNegocio = new ClienteNegocio();
-            string nombreUsuario;
-            nombreUsuario = (string)Session["usuario"];
+            Usuario nombreUsuario;
+            nombreUsuario = (Usuario)Session["usuario"];
             int idCliente;
-            idCliente = clienteNegocio.buscarCliente(nombreUsuario);
+            idCliente = clienteNegocio.buscarCliente(nombreUsuario.NombreUsuario);
 
-            int total;
-            total = Convert.ToInt32((string)Session["totalAPagar"]);
+            string total;
+
+            total = (string)Session["totalAPagar"];
 
             VentaNegocio ventaNegocio = new VentaNegocio();
             Venta aux = new Venta();
+            aux.IdCliente = new Cliente();
             aux.IdCliente.IdCliente = idCliente;
+            aux.FOP = new FormaDePago();
             aux.FOP.Tipo = FOP;
-            aux.Total = total;
+            aux.Total = decimal.Parse(total);
             ventaNegocio.guardar(aux);
 
             listaCarrito = (List<ElementoCarrito>)Session["listaCarrito2"];
-            foreach (dominio.Stock item in listaStock)
+
+            foreach (dominio.ElementoCarrito item in listaCarrito)
             {
                 StockNegocio negocio = new StockNegocio();
                 negocio.descontarStock(listaCarrito[i].IdArticulo.Id, listaCarrito[i].Cantidad, listaCarrito[i].Talle);

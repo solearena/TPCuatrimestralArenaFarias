@@ -21,6 +21,7 @@ namespace dominio
         public string Contrasenia { get; set; }
 
         public TipoUsuario TipoUsuario { get; set; }
+        public Usuario Id { get; set; }
 
         public Usuario(string user,string pass, bool admin)
         {
