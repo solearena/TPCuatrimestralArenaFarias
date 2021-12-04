@@ -60,11 +60,13 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO ELEMENTOCARRITO(IDARTICULO,CANTIDAD,TALLE,PRECIOUNITARIO) VALUES(@IdArticulo,@Cantidad,@Talle,@PrecioUnitario)");
-                datos.setearParametro("@IdArticulo",aux.IdArticulo);
+                datos.setearConsulta("INSERT INTO ELEMENTOCARRITO(IDVENTA, IDARTICULO, CANTIDAD, TALLE, PRECIOUNITARIO) VALUES(@IdVenta, @IdArticulo,@Cantidad,@Talle,@PrecioUnitario)");
+                datos.setearParametro("@IdVenta",aux.IdVenta.Id);
+                datos.setearParametro("@IdArticulo", aux.IdArticulo.Id);
                 datos.setearParametro("@Cantidad", aux.Cantidad);
                 datos.setearParametro("@Talle", aux.Talle);
                 datos.setearParametro("@PrecioUnitario", aux.PrecioUnitario);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {

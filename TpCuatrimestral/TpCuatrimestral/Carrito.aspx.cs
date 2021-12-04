@@ -11,8 +11,8 @@ namespace TpCuatrimestral
 {
     public partial class Carrito : System.Web.UI.Page
     {
-        private List<Articulo> listaCarrito;
         List<Stock> listaStock = new List<Stock>();
+        public List<ElementoCarrito> listaCarrito { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             StockNegocio negocio = new StockNegocio();
@@ -54,6 +54,35 @@ namespace TpCuatrimestral
             //dgvCarrito.DataBind();
             
             Response.Redirect("Pagar.aspx");
+        }
+
+        protected void imgTacho_Click(object sender, ImageClickEventArgs e)
+        {
+            ImageButton button = sender as ImageButton;
+            ElementoCarrito elemento = new ElementoCarrito();
+            try
+            {
+                elemento.IdArticulo = new Articulo();
+                elemento.IdArticulo.Id = Convert.ToInt32(button.CommandArgument);
+                listaCarrito = (List<ElementoCarrito>)Session["listaCarrito2"];
+                int i = 0;
+                int index = 0;
+                foreach(dominio.ElementoCarrito item in listaCarrito)
+                {
+                    if(elemento.IdArticulo.Id == item.IdArticulo.Id)
+                    {
+                        index = i;
+                    }
+                    i++;
+                }
+                listaCarrito.RemoveAt(index);
+                Session.Add("listaCarrito2", listaCarrito);
+                Response.Redirect("Carrito.aspx");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

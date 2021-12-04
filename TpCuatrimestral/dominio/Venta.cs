@@ -12,13 +12,11 @@ namespace dominio
         public int Id { get; set; }
         public decimal Total { get; set; }
         [DisplayName("Fecha de Compra")]
-        public string FechaCompra { get; set; }
+        public DateTime FechaCompra { get; set; }
         [DisplayName("Forma de Pago")]
         public FormaDePago FOP { get; set; }
         public Cliente IdCliente { get; set; }
-        public override string ToString()
-        {
-            return FechaCompra;
-        }
+        public bool Despachado { get; set; } //0: sin despachar 1:despachado
+
     }
 }

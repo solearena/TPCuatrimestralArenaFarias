@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Carrito.aspx.cs" Inherits="TpCuatrimestral.Carrito" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Carrito.aspx.cs" Inherits="TpCuatrimestral.Carrito" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -12,8 +12,13 @@
             <asp:BoundField DataField="Talle" HeaderText="Talle" />
             <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
             <asp:BoundField DataField="PrecioUnitario" HeaderText="Precio Unitario" />
-            <asp:CommandField ShowSelectButton="true"/>
-            <asp:CommandField ShowDeleteButton="true"/>
+            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="150px">
+                    <ItemTemplate>
+                        <asp:ImageButton ID="imgTacho" runat="server" ImageUrl="~/Content/Img/bote-de-basura.png" CommandArgument='<%# Eval("IdArticulo.Id") %>' CommandName="Delete" OnClick="imgTacho_Click"/>
+                    </ItemTemplate>
+                <HeaderStyle Width="150px"></HeaderStyle>
+                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+            </asp:TemplateField>
         </Columns>
     </asp:GridView>
     <div class="text-end fw-bold">

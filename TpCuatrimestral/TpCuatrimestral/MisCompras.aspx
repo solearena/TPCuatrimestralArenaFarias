@@ -8,11 +8,11 @@
     <asp:GridView ID="dgvCompras" runat="server" CssClass="table" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">
                 <AlternatingRowStyle BackColor="#F7F7F7" />
                 <Columns>
-                    <asp:BoundField DataField="IdVenta" HeaderText="Numero de Pedido" />
+                    <asp:BoundField DataField="Id" HeaderText="Numero de Venta" />
                     <asp:BoundField DataField="Total" HeaderText="Total" />
-                    <asp:BoundField DataField="FechaCompra" HeaderText="Fecha" />
-                    <asp:BoundField DataField="IdFOP" HeaderText="Forma de Pago" />
-                    <asp:BoundField DataField="IdCliente" HeaderText="Numero Cliente" />
+                    <asp:BoundField DataField="FechaCompra" HeaderText="Fecha de Compra" />
+                    <asp:BoundField DataField="FOP.Tipo" HeaderText="Forma de Pago" />
+                    <asp:BoundField DataField="Despachado" HeaderText="Despacho" />
                 </Columns>
                 <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
                 <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />

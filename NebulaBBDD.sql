@@ -44,13 +44,6 @@ create table Stock(
 	Talle varchar(3) not null 
 )
 go
-create table ElementoCarrito(
-IdArticulo int not null foreign key references Articulo(Id),
-Cantidad int not null check(Cantidad > 0),
-Talle varchar(3) not null,
-PrecioUnitario money not null
-)
-go
 create table Cliente(
 	Id int not null primary key identity(1,1),
 	Nombre varchar(100) not null,
@@ -64,17 +57,26 @@ create table Cliente(
 )
 go
 create table Venta(
-	Id bigint not null primary key identity(1,1),
+	Id int not null primary key identity(1,1),
 	Total money not null,
 	FechaCompra Date not null,
+	Despachado bit not null, 
 	IdFOP int not null foreign key references FOP(Id),
 	IdCliente int not null foreign key references Cliente(Id)
+)
+go
+create table ElementoCarrito(
+	IdVenta int not null foreign key references Venta(Id),
+	IdArticulo int not null foreign key references Articulo(Id),
+	Cantidad int not null check(Cantidad > 0),
+	Talle varchar(3) not null,
+	PrecioUnitario money not null
 )
 go
 
 create table Carrito(
 	Id int not null primary key identity(1,1),
-	IdVenta bigint not null foreign key references Venta(Id),
+	IdVenta int not null foreign key references Venta(Id),
 	IdArticulo int not null foreign key references Articulo(Id),
 	Cantidad int not null check(Cantidad > 0),
 	Talle varchar(3) not null

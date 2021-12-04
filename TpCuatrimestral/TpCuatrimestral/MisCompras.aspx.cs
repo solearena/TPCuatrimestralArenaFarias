@@ -11,25 +11,38 @@ namespace TpCuatrimestral
 {
     public partial class MisCompras : System.Web.UI.Page
     {
-        public List<Venta> listaCarrito { get; set; }
+        public List<Venta> listaCompras { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            VentaNegocio negocio = new VentaNegocio();
             Page.Validate();
             if (!Page.IsValid)
             {
                 return;
             }
-            VentaNegocio negocio = new VentaNegocio();
-            try
+            if (Session["usuario"] == null)
             {
-                listaCarrito = negocio.listar();
-                dgvCompras.DataSource = listaCarrito;
-                dgvCompras.DataBind();
+                Session.Add("error", "No tienes permisos para ingresar a esta pantalla.");
+                Response.Redirect("Error.aspx", false);
             }
-            catch (Exception ex) //ACA TIRA ERROR PORQUE ESTA EN NULL
+            else
             {
+                try
+                {
+                    Usuario nombreUsuario;
+                    ClienteNegocio clienteNegocio = new ClienteNegocio();
+                    nombreUsuario = (Usuario)Session["usuario"];
+                    int idCliente;
+                    idCliente = clienteNegocio.buscarCliente(nombreUsuario.NombreUsuario);
+                    listaCompras = negocio.listaPorCliente(idCliente);
+                    dgvCompras.DataSource = listaCompras;
+                    dgvCompras.DataBind();
+                }
+                catch (Exception ex) //ACA TIRA ERROR PORQUE ESTA EN NULL
+                {
 
-                throw ex;
+                    throw ex;
+                }
             }
         }
     }

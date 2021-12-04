@@ -30,7 +30,7 @@ namespace TpCuatrimestral
         protected void imgBanco_Click(object sender, ImageClickEventArgs e)
         {
             int i = 0;
-            string FOP = "Transferencia Bancaria";
+            int FOP = 3;
             ClienteNegocio clienteNegocio = new ClienteNegocio();
             Usuario nombreUsuario;
             nombreUsuario = (Usuario)Session["usuario"];
@@ -43,20 +43,40 @@ namespace TpCuatrimestral
 
             VentaNegocio ventaNegocio = new VentaNegocio();
             Venta aux = new Venta();
-            aux.IdCliente = new Cliente();
-            aux.IdCliente.IdCliente = idCliente;
-            aux.FOP = new FormaDePago();
-            aux.FOP.Tipo = FOP;
-            aux.Total = decimal.Parse(total);
-            ventaNegocio.guardar(aux);
 
             listaCarrito = (List<ElementoCarrito>)Session["listaCarrito2"];
-
-            foreach (dominio.ElementoCarrito item in listaCarrito)
+            if (Session["listaCarrito2"] == null)
             {
-                StockNegocio negocio = new StockNegocio();
-                negocio.descontarStock(listaCarrito[i].IdArticulo.Id, listaCarrito[i].Cantidad, listaCarrito[i].Talle);
-                i++;
+                Session.Add("error", "Ya has abonado.");
+                Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                aux.IdCliente = new Cliente();
+                aux.IdCliente.IdCliente = idCliente;
+                aux.FOP = new FormaDePago();
+                aux.FOP.IdFP = FOP;
+                aux.Total = decimal.Parse(total);
+                ventaNegocio.guardar(aux);
+                int idVenta = ventaNegocio.buscarUltimaVenta();
+                foreach (dominio.ElementoCarrito item in listaCarrito)
+                {
+                    StockNegocio negocio = new StockNegocio();
+                    negocio.descontarStock(listaCarrito[i].IdArticulo.Id, listaCarrito[i].Cantidad, listaCarrito[i].Talle);
+
+                    ElementoCarritoNegocio elementoCarritoNegocio = new ElementoCarritoNegocio();
+                    ElementoCarrito elemento = new ElementoCarrito();
+                    elemento.IdArticulo = new Articulo();
+                    elemento.IdArticulo.Id = listaCarrito[i].IdArticulo.Id;
+                    elemento.IdVenta = new Venta();
+                    elemento.IdVenta.Id = idVenta;
+                    elemento.Cantidad = listaCarrito[i].Cantidad;
+                    elemento.Talle = listaCarrito[i].Talle;
+                    elemento.PrecioUnitario = listaCarrito[i].PrecioUnitario;
+                    elementoCarritoNegocio.guardar(elemento);
+
+                    i++;
+                }
             }
             Session["listaCarrito2"] = null;
         }
@@ -64,7 +84,7 @@ namespace TpCuatrimestral
         protected void imgDinero_Click(object sender, ImageClickEventArgs e)
         {
             int i = 0;
-            string FOP = "Efectivo";
+            int FOP = 1;
             ClienteNegocio clienteNegocio = new ClienteNegocio();
             Usuario nombreUsuario;
             nombreUsuario = (Usuario)Session["usuario"];
@@ -74,23 +94,43 @@ namespace TpCuatrimestral
             string total;
             
             total = (string)Session["totalAPagar"];
-
+            
             VentaNegocio ventaNegocio = new VentaNegocio();
             Venta aux = new Venta();
-            aux.IdCliente = new Cliente();
-            aux.IdCliente.IdCliente = idCliente;
-            aux.FOP = new FormaDePago();
-            aux.FOP.Tipo = FOP;
-            aux.Total = decimal.Parse(total);
-            ventaNegocio.guardar(aux);
 
             listaCarrito = (List<ElementoCarrito>)Session["listaCarrito2"];
-
-            foreach (dominio.ElementoCarrito  item in listaCarrito)
+            if(Session["listaCarrito2"] == null)
             {
-                StockNegocio negocio = new StockNegocio();
-                negocio.descontarStock(listaCarrito[i].IdArticulo.Id, listaCarrito[i].Cantidad, listaCarrito[i].Talle);
-                i++;
+                Session.Add("error", "Ya has abonado.");
+                Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                aux.IdCliente = new Cliente();
+                aux.IdCliente.IdCliente = idCliente;
+                aux.FOP = new FormaDePago();
+                aux.FOP.IdFP = FOP;
+                aux.Total = decimal.Parse(total);
+                ventaNegocio.guardar(aux);
+                int idVenta = ventaNegocio.buscarUltimaVenta();
+                foreach (dominio.ElementoCarrito  item in listaCarrito)
+                {
+                    StockNegocio negocio = new StockNegocio();
+                    negocio.descontarStock(listaCarrito[i].IdArticulo.Id, listaCarrito[i].Cantidad, listaCarrito[i].Talle);
+
+                    ElementoCarritoNegocio elementoCarritoNegocio = new ElementoCarritoNegocio();
+                    ElementoCarrito elemento = new ElementoCarrito();
+                    elemento.IdArticulo = new Articulo();
+                    elemento.IdArticulo.Id = listaCarrito[i].IdArticulo.Id;
+                    elemento.IdVenta = new Venta();
+                    elemento.IdVenta.Id = idVenta;
+                    elemento.Cantidad = listaCarrito[i].Cantidad;
+                    elemento.Talle = listaCarrito[i].Talle;
+                    elemento.PrecioUnitario = listaCarrito[i].PrecioUnitario;
+                    elementoCarritoNegocio.guardar(elemento);
+
+                    i++;
+                }
             }
             Session["listaCarrito2"] = null;
         }
@@ -98,7 +138,7 @@ namespace TpCuatrimestral
         protected void imgMP_Click(object sender, ImageClickEventArgs e)
         {
             int i = 0;
-            string FOP = "Mercado Pago";
+            int FOP = 2;
 
             ClienteNegocio clienteNegocio = new ClienteNegocio();
             Usuario nombreUsuario;
@@ -112,20 +152,40 @@ namespace TpCuatrimestral
 
             VentaNegocio ventaNegocio = new VentaNegocio();
             Venta aux = new Venta();
-            aux.IdCliente = new Cliente();
-            aux.IdCliente.IdCliente = idCliente;
-            aux.FOP = new FormaDePago();
-            aux.FOP.Tipo = FOP;
-            aux.Total = decimal.Parse(total);
-            ventaNegocio.guardar(aux);
 
             listaCarrito = (List<ElementoCarrito>)Session["listaCarrito2"];
-
-            foreach (dominio.ElementoCarrito item in listaCarrito)
+            if (Session["listaCarrito2"] == null)
             {
-                StockNegocio negocio = new StockNegocio();
-                negocio.descontarStock(listaCarrito[i].IdArticulo.Id, listaCarrito[i].Cantidad, listaCarrito[i].Talle);
-                i++;
+                Session.Add("error", "Ya has abonado.");
+                Response.Redirect("Error.aspx", false);
+            }
+            else
+            {
+                aux.IdCliente = new Cliente();
+                aux.IdCliente.IdCliente = idCliente;
+                aux.FOP = new FormaDePago();
+                aux.FOP.IdFP = FOP;
+                aux.Total = decimal.Parse(total);
+                ventaNegocio.guardar(aux);
+                int idVenta = ventaNegocio.buscarUltimaVenta();
+                foreach (dominio.ElementoCarrito item in listaCarrito)
+                {
+                    StockNegocio negocio = new StockNegocio();
+                    negocio.descontarStock(listaCarrito[i].IdArticulo.Id, listaCarrito[i].Cantidad, listaCarrito[i].Talle);
+
+                    ElementoCarritoNegocio elementoCarritoNegocio = new ElementoCarritoNegocio();
+                    ElementoCarrito elemento = new ElementoCarrito();
+                    elemento.IdArticulo = new Articulo();
+                    elemento.IdArticulo.Id = listaCarrito[i].IdArticulo.Id;
+                    elemento.IdVenta = new Venta();
+                    elemento.IdVenta.Id = idVenta;
+                    elemento.Cantidad = listaCarrito[i].Cantidad;
+                    elemento.Talle = listaCarrito[i].Talle;
+                    elemento.PrecioUnitario = listaCarrito[i].PrecioUnitario;
+                    elementoCarritoNegocio.guardar(elemento);
+
+                    i++;
+                }
             }
             Session["listaCarrito2"] = null;
         }

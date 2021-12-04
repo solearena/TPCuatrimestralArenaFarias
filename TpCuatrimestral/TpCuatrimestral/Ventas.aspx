@@ -1,23 +1,21 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Ventas.aspx.cs" Inherits="TpCuatrimestral.Ventas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Ventas.aspx.cs" Inherits="TpCuatrimestral.Ventas" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="dgvVentas" runat="server" CssClass="table" AutoGenerateColumns="False" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+    <asp:UpdatePanel runat="server">
+        <ContentTemplate>
+            <asp:GridView ID="dgvVentas" runat="server" CssClass="table" AutoGenerateColumns="False" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4">
                 <Columns>
-                    <asp:BoundField DataField="IdVenta" HeaderText="Numero de Pedido" />
+                    <asp:BoundField DataField="Id" HeaderText="Numero de Venta" />
                     <asp:BoundField DataField="Total" HeaderText="Total" />
                     <asp:BoundField DataField="FechaCompra" HeaderText="Fecha" />
-                    <asp:BoundField DataField="IdFOP" HeaderText="Forma de Pago" />
-                    <asp:BoundField DataField="IdCliente" HeaderText="Numero Cliente" />
-
+                    <asp:BoundField DataField="FOP.Tipo" HeaderText="Forma de Pago" />
+                    <asp:BoundField DataField="IdCliente.IdCliente" HeaderText="Numero Cliente" />
+                    <asp:BoundField DataField="Despachado" HeaderText="DESPACHO"  />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:CheckBox ID="Despachar" runat="server" Text="DESPACHADO" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Button ID="btnEliminar" runat="server" Text="CANCELAR PEDIDO" />
+                            <asp:Button ID="btbDespacho" runat="server" Text="ENVIAR PEDIDO" OnClick="btbDespacho_Click" CommandArgument='<%# Eval("Id") %>' CommandName="Delete"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -30,5 +28,7 @@
                 <SortedAscendingHeaderStyle BackColor="#AF0101" />
                 <SortedDescendingCellStyle BackColor="#F6F0C0" />
                 <SortedDescendingHeaderStyle BackColor="#7E0000" />
-    </asp:GridView>
+            </asp:GridView>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>
