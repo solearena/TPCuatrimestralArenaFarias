@@ -17,7 +17,7 @@ using dominio;
 
             try
             {
-                datos.setearConsulta("Select V.Id, V.Total, V.FechaCompra, F.Tipo, V.IdCliente, V.Despachado FROM Venta AS V INNER JOIN FOP AS F ON F.Id = V.IdFOP ");
+                datos.setearConsulta("Select V.Id, cast(V.Total as decimal(10,2)) as Total, V.FechaCompra, F.Tipo, V.IdCliente, V.Despachado FROM Venta AS V INNER JOIN FOP AS F ON F.Id = V.IdFOP ");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

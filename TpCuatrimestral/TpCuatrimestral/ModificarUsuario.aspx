@@ -18,6 +18,9 @@
             <asp:tablecell>
                 <asp:textbox runat="server" cssclass="form-control" id="txtdireccion" clientidmode="static"/>
             </asp:tablecell>
+            <asp:TableCell>
+                <asp:Label ID="lblDireccion" runat="server" Text=""></asp:Label>
+            </asp:TableCell>
         </asp:tablerow>
         <asp:tablerow>
             <asp:tablecell>
@@ -26,6 +29,9 @@
             <asp:tablecell>
                 <asp:textbox runat="server" cssclass="form-control" id="txtprovincia" clientidmode="static"/> 
             </asp:tablecell>
+            <asp:TableCell>
+                <asp:Label ID="lblProvincia" runat="server" Text=""></asp:Label>
+            </asp:TableCell>
         </asp:tablerow>
             <asp:tablerow>
             <asp:tablecell>
@@ -34,6 +40,9 @@
             <asp:tablecell>
                 <asp:textbox runat="server" cssclass="form-control" id="txtpais" clientidmode="static"/> 
             </asp:tablecell>
+                <asp:TableCell>
+                <asp:Label ID="lblPais" runat="server" Text=""></asp:Label>
+                </asp:TableCell>
         </asp:tablerow>
             <asp:tablerow>
             <asp:tablecell>
@@ -42,8 +51,12 @@
             <asp:tablecell>
                 <asp:textbox runat="server" cssclass="form-control" id="txtcodpostal" clientidmode="static"/> 
             </asp:tablecell>
-        </asp:tablerow>
+                <asp:TableCell>
+                <asp:Label ID="lblCodPostal" runat="server" Text=""></asp:Label>
+                </asp:TableCell>
+            </asp:tablerow>
     </asp:table>
+    <br />
     <asp:Button ID="btnAceptar" runat="server" Text="ACEPTAR" CssClass="btn btn-danger" OnClick="btnAceptar_Click"/>
     <asp:Button ID="btnCancelar" runat="server" Text="CANCELAR" OnClick="btnCancelar_Click" CssClass="btn btn-danger"/>
 </asp:Content>

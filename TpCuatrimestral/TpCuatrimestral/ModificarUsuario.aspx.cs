@@ -34,6 +34,11 @@ namespace TpCuatrimestral
                 Direccion direccion = new Direccion();
                 direccion = direccionNegocio.buscarDireccion(usuario.NombreUsuario);
                 Session.Add("direccion", direccion);
+
+                lblDireccion.Text = direccion.CalleNum;
+                lblPais.Text = direccion.Pais;
+                lblProvincia.Text = direccion.Provincia;
+                lblCodPostal.Text = direccion.CodPostal;
             }
        }
 
@@ -65,14 +70,14 @@ namespace TpCuatrimestral
                 {
                     direccion.Pais = txtpais.Text;
                 }
+                negocio.modificar(direccion);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            negocio.modificar(direccion);
             Response.Write("<script language=javascript>alert('Se ha modificado con exito!');</script>");
-            //Response.Redirect("Default.aspx");
+            Response.Redirect("ModificarUsuario.aspx");
         }
     }
 }

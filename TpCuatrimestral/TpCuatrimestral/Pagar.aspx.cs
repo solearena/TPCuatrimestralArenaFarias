@@ -79,6 +79,7 @@ namespace TpCuatrimestral
                 }
             }
             Session["listaCarrito2"] = null;
+            Response.Redirect("Despedida.aspx");
         }
 
         protected void imgDinero_Click(object sender, ImageClickEventArgs e)
@@ -133,6 +134,7 @@ namespace TpCuatrimestral
                 }
             }
             Session["listaCarrito2"] = null;
+            Response.Redirect("Despedida.aspx");
         }
 
         protected void imgMP_Click(object sender, ImageClickEventArgs e)
@@ -188,6 +190,7 @@ namespace TpCuatrimestral
                 }
             }
             Session["listaCarrito2"] = null;
+            Response.Redirect("Despedida.aspx");
         }
     }
 }

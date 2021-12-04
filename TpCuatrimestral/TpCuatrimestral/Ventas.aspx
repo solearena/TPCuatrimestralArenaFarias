@@ -12,7 +12,10 @@
                     <asp:BoundField DataField="FechaCompra" HeaderText="Fecha" />
                     <asp:BoundField DataField="FOP.Tipo" HeaderText="Forma de Pago" />
                     <asp:BoundField DataField="IdCliente.IdCliente" HeaderText="Numero Cliente" />
-                    <asp:BoundField DataField="Despachado" HeaderText="DESPACHO"  />
+                    <asp:TemplateField>
+                        <ItemTemplate>                            <%# Boolean.Parse(Eval("Despachado").ToString()) ? "DESPACHADO" : "" %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
                             <asp:Button ID="btbDespacho" runat="server" Text="ENVIAR PEDIDO" OnClick="btbDespacho_Click" CommandArgument='<%# Eval("Id") %>' CommandName="Delete"/>

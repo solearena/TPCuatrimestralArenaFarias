@@ -1,4 +1,4 @@
-create database NEBULA
+drop database NEBULA
 go
 use NEBULA
 go
@@ -59,7 +59,7 @@ go
 create table Venta(
 	Id int not null primary key identity(1,1),
 	Total money not null,
-	FechaCompra Date not null,
+	FechaCompra DateTime not null,
 	Despachado bit not null, 
 	IdFOP int not null foreign key references FOP(Id),
 	IdCliente int not null foreign key references Cliente(Id)

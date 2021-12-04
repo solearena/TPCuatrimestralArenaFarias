@@ -88,6 +88,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Img\banco.png" />
+    <Content Include="Content\Img\bolsa-de-la-compra.png" />
     <Content Include="Content\Img\bote-de-basura.png" />
     <Content Include="Content\Img\caja.png" />
     <Content Include="Content\Img\carrito-de-compras.png" />
@@ -98,6 +99,7 @@
     <Content Include="Content\Img\LogoNebula3.gif" />
     <Content Include="Content\Img\ML.png" />
     <Content Include="Content\Img\MP.jpg" />
+    <Content Include="Despedida.aspx" />
     <Content Include="DetalleProducto.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="Home.aspx" />
@@ -154,6 +156,13 @@
     </Compile>
     <Compile Include="Contacto.aspx.designer.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Despedida.aspx.cs">
+      <DependentUpon>Despedida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Despedida.aspx.designer.cs">
+      <DependentUpon>Despedida.aspx</DependentUpon>
     </Compile>
     <Compile Include="DetalleProducto.aspx.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
