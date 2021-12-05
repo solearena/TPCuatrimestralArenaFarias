@@ -39,8 +39,8 @@
                 <h3> ¿ESTAS SEGURO QUE QUERES CONTINUAR CON LA COMPRA?</h3>
             </div>
             <div class="modal-footer">
-                <asp:Button ID="btnAceptar" runat="server" Text="ACEPTAR" data-dismiss ="modal" OnClick="btnAceptar_Click" />
-                <asp:Button ID="btnCancelar" runat="server" Text="CANCELAR" data-dismiss ="modal" OnClick="btnCancelar_Click" />
+                <asp:Button ID="btnAceptar" runat="server" Text="ACEPTAR" data-dismiss ="modal" OnClick="btnAceptar_Click" CssClass="btn btn-danger"/>
+                <asp:Button ID="btnCancelar" runat="server" Text="CANCELAR" data-dismiss ="modal" OnClick="btnCancelar_Click" CssClass="btn btn-danger" />
             </div>
         </div>
     </div>

@@ -7,11 +7,11 @@
         <ContentTemplate>
             <asp:GridView ID="dgvVentas" runat="server" CssClass="table" AutoGenerateColumns="False" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4">
                 <Columns>
-                    <asp:BoundField DataField="Id" HeaderText="Numero de Venta" />
+                    <asp:BoundField DataField="Id" HeaderText="Número de Venta" />
                     <asp:BoundField DataField="Total" HeaderText="Total" />
                     <asp:BoundField DataField="FechaCompra" HeaderText="Fecha" />
                     <asp:BoundField DataField="FOP.Tipo" HeaderText="Forma de Pago" />
-                    <asp:BoundField DataField="IdCliente.IdCliente" HeaderText="Numero Cliente" />
+                    <asp:BoundField DataField="IdCliente.IdCliente" HeaderText="Número Cliente" />
                     <asp:TemplateField>
                         <ItemTemplate>                            <%# Boolean.Parse(Eval("Despachado").ToString()) ? "DESPACHADO" : "" %>
                         </ItemTemplate>

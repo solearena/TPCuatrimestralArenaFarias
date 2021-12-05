@@ -70,16 +70,6 @@
                     <p><span>¿A partir de cuando se cuenta el tiempo de envío?</span>El tiempo de envío se cuenta a
                         partir de que tu pago se procese y apruebe.</p>
 
-                    <p><span>RETIRO EN TIENDA</span></p> 
-
-                    <p><span>¿Cuánto tarda el envío en estar disponible para retirar en la tienda?</span>El plazo
-                        estimado es entre 3 y 6 días hábiles.</p>
-
-                    <p><span>¿Qué necesito para retirar mi pedido por la tienda?</span>¡Solamente presentando tu
-                        DNI! Solo el titular de la tarjeta podra retirar el pedido</p>
-
-                    <p><span>¿Cuánto tiempo tengo para retirar mi pedido por el local?</span>Una vez que te llega el
-                        e-mail de confirmación tenés 48 hs para retirarlo por la tienda.</p>
                 </div>
             </div>
             <div class="modal-footer">

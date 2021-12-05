@@ -8,14 +8,14 @@
     <asp:GridView ID="dgvCompras" runat="server" CssClass="table" AutoGenerateColumns="False" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">
         <AlternatingRowStyle BackColor="#F7F7F7" />
         <Columns>
-            <asp:BoundField DataField="Id" HeaderText="Numero de Venta" />
+            <asp:BoundField DataField="Id" HeaderText="Número de Venta" />
             <asp:BoundField DataField="Total" HeaderText="Total" />
             <asp:BoundField DataField="FechaCompra" HeaderText="Fecha de Compra" />
             <asp:BoundField DataField="FOP.Tipo" HeaderText="Forma de Pago" />
 
             <asp:TemplateField>
                 <ItemTemplate>
-                    <%# Boolean.Parse(Eval("Despachado").ToString()) ? "DESPACHADO" : "EN PREPARACION" %>
+                    <%# Boolean.Parse(Eval("Despachado").ToString()) ? "DESPACHADO" : "EN PREPARACIÓN" %>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

@@ -39,7 +39,7 @@
                 <asp:TextBox ID="txtNombre" runat="server" ></asp:TextBox>
             </div>
             <div class="col-1">
-                <asp:Label ID="lblDescripcion" runat="server" Text="Descripcion"></asp:Label>
+                <asp:Label ID="lblDescripcion" runat="server" Text="Descripción"></asp:Label>
                 <asp:TextBox ID="txtDescripcion" runat="server" ></asp:TextBox>
             </div>
             <div class="col-1">

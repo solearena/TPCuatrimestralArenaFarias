@@ -8,7 +8,7 @@
             <div class="col">
                 <asp:Label Text="NOMBRE" runat="server" />
                 <asp:TextBox ID="txtNombre" runat="server" Class="form-control"></asp:TextBox>
-                <asp:Label Text="DESCRIPCION" runat="server" />
+                <asp:Label Text="DESCRIPCIÓN" runat="server" />
                 <asp:TextBox ID="txtDescripcion" runat="server" Class="form-control"></asp:TextBox>
                 <asp:Label Text="STOCK" runat="server" />
                 <asp:TextBox ID="txtStock" runat="server" Class="form-control"></asp:TextBox>

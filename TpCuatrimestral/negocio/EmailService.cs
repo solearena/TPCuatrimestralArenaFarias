@@ -26,7 +26,7 @@ namespace negocio
         public void armarCorreo(string emailDestino, string asunto, string cuerpo)
         {
             email = new MailMessage();
-            email.From = new MailAddress("noresponder@nebula.com.ar","Nebula Shop");
+            email.From = new MailAddress("noresponder@nebula.com.ar");
             email.To.Add(emailDestino);
             email.Subject = asunto;
             email.IsBodyHtml = true;
