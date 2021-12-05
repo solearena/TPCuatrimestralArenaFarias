@@ -45,5 +45,20 @@ namespace TpCuatrimestral
                 }
             }
         }
+
+        protected void btnVerMas_Click(object sender, EventArgs e)
+        {
+            Venta venta = new Venta();
+            Button boton = sender as Button;
+            try
+            {
+                venta.Id = Convert.ToInt32(boton.CommandArgument);
+                Response.Redirect("VerMas.aspx?Id=" + venta.Id, false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

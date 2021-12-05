@@ -82,21 +82,19 @@ namespace TpCuatrimestral
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
         protected void dgvArticulos_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            
+        {           
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-                ArticuloNegocio negocio = new ArticuloNegocio();
-                Articulo articulo = new Articulo();
-                Button boton = sender as Button;
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo articulo = new Articulo();
+            Button boton = sender as Button;
             try
             {
                 articulo.Id = Convert.ToInt32(boton.CommandArgument);
@@ -104,7 +102,6 @@ namespace TpCuatrimestral
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -152,11 +149,9 @@ namespace TpCuatrimestral
                 
                 i = 0;
                 return stock;
-
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -185,11 +180,7 @@ namespace TpCuatrimestral
 
             listaStock2 = stockneg.cargarStockPorArticulo(id);
             dgvStock.DataSource = listaStock2;
-            dgvStock.DataBind();
-
-            
-            
-            
+            dgvStock.DataBind();           
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

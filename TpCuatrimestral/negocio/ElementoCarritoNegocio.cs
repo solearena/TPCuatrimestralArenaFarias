@@ -10,43 +10,31 @@ namespace negocio
 {
     public class ElementoCarritoNegocio
     {
-        public List<ElementoCarrito> listar()
+        public List<ElementoCarrito> listar(int idVenta)
         {
             List<ElementoCarrito> lista = new List<ElementoCarrito>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("");//agregar consulta de bbdd
+                datos.setearConsulta("SELECT A.Nombre, EC.Cantidad, EC.Talle, EC.PrecioUnitario FROM ElementoCarrito AS EC INNER JOIN Articulo AS A ON A.Id = EC.IdArticulo WHERE IdVenta =" + idVenta + "");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     ElementoCarrito aux = new ElementoCarrito();
-                    /*aux.Id = (int)datos.Lector["Id"];
-                    aux.CodigoArticulo = (string)datos.Lector["Codigo"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
-                    {
-                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-                    }
-                    aux.DescripcionMarca = new Marca();
-                    aux.DescripcionMarca.Id = (int)datos.Lector["Id"];
-                    aux.DescripcionMarca.Descripcion = (string)datos.Lector["Marca"];
-                    aux.DescripcionCategoria = new Categoria();
-                    aux.DescripcionCategoria.Id = (int)datos.Lector["Id"];
-                    aux.DescripcionCategoria.Descripcion = (string)datos.Lector["Categoria"];
-                    lista.Add(aux);*/
-
+                    aux.IdArticulo = new Articulo();
+                    aux.IdArticulo.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Cantidad = (int)datos.Lector["Cantidad"];
+                    aux.Talle = (string)datos.Lector["Talle"];
+                    aux.PrecioUnitario = (decimal)datos.Lector["PrecioUnitario"];
+                    lista.Add(aux);
                 }
 
                 return lista;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally

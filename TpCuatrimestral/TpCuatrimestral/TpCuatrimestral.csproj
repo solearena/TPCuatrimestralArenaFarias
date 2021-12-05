@@ -125,6 +125,7 @@
     <Content Include="Scripts\jquery-3.6.0.slim.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
     <Content Include="Ventas.aspx" />
+    <Content Include="VerMas.aspx" />
     <Content Include="Web.config" />
     <Content Include="Default.aspx" />
   </ItemGroup>
@@ -276,6 +277,13 @@
     </Compile>
     <Compile Include="Ventas.aspx.designer.cs">
       <DependentUpon>Ventas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerMas.aspx.cs">
+      <DependentUpon>VerMas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerMas.aspx.designer.cs">
+      <DependentUpon>VerMas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

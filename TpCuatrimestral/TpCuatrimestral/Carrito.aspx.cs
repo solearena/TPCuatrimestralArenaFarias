@@ -11,27 +11,13 @@ namespace TpCuatrimestral
 {
     public partial class Carrito : System.Web.UI.Page
     {
-        List<Stock> listaStock = new List<Stock>();
         public List<ElementoCarrito> listaCarrito { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             StockNegocio negocio = new StockNegocio();
-            int stock = 0;
             dgvCarrito.DataSource = Session["listaCarrito2"];
             dgvCarrito.DataBind();
-            //listaCarrito = (List<Articulo>)Session["listaCarrito"];
             decimal total = 0;
-            //for (int i = 0; i < dgvcarrito.rows.count; i++)
-            //{
-            //    stock aux = new stock();
-            //    aux.talle = listacarrito[i].stock.talle;
-            //    aux.idarticulo = new articulo();
-            //    aux.idarticulo.id = listacarrito[i].id;
-            //    stock = negocio.buscarstock(aux.idarticulo.id,aux.talle);
-            //    aux.stockarticulo = stock;
-            //    listastock.add(aux);
-            //}
-            //session.add("listastock",listastock);
             for (int i = 0; i < dgvCarrito.Rows.Count; i++)
             {
                 total += (Convert.ToDecimal(dgvCarrito.Rows[i].Cells[2].Text)* Convert.ToDecimal(dgvCarrito.Rows[i].Cells[3].Text));
@@ -43,7 +29,6 @@ namespace TpCuatrimestral
         protected void dgvCarrito_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = e.ToString();
-
         }
 
         protected void btnPagar_Click(object sender, EventArgs e)
