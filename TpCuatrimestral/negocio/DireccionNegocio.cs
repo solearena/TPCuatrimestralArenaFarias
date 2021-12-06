@@ -50,12 +50,12 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Insert Into Direccion(CalleNum, CodigoPostal, Provincia, Pais) Values(@CALLE, @CODIGOPOSTAL, @PROVINCIA, @PAIS)");
+                datos.setearConsulta("Insert Into Direccion(CalleNum, CodigoPostal, Provincia, Pais) Values(@CalleNum, @CodigoPostal, @Provincia, @Pais)");
                 datos.ejecutarLectura();
-                datos.setearParametro("@CALLE", aux.CalleNum);
-                datos.setearParametro("@CODIGOPOSTAL", aux.CodPostal);
-                datos.setearParametro("@PROVINCIA", aux.Provincia);
-                datos.setearParametro("@PAIS", aux.Pais);
+                datos.setearParametro("@CalleNum", aux.CalleNum);
+                datos.setearParametro("@CodigoPostal", aux.CodPostal);
+                datos.setearParametro("@Provincia", aux.Provincia);
+                datos.setearParametro("@Pais", aux.Pais);
 
                 datos.ejecutarAccion();
 
