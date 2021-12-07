@@ -102,6 +102,7 @@
     <Content Include="Despedida.aspx" />
     <Content Include="DetalleProducto.aspx" />
     <Content Include="Error.aspx" />
+    <Content Include="ErroStock.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MenuLogin.aspx" />
@@ -178,6 +179,13 @@
     </Compile>
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErroStock.aspx.cs">
+      <DependentUpon>ErroStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErroStock.aspx.designer.cs">
+      <DependentUpon>ErroStock.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

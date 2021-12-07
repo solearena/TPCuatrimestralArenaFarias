@@ -20,7 +20,6 @@ namespace TpCuatrimestral
         //private Articulo articulo = null;
         public Articulo articulo { get; set; }
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -62,9 +61,6 @@ namespace TpCuatrimestral
                     Session.Add("listaCarrito", listaCarrito);
                     Session.Add("listaCarrito2", listaCarrito2);
                 }
-                
-                
-
             }
         }
         private void Cargar(int id)
@@ -137,6 +133,7 @@ namespace TpCuatrimestral
                 int stockDisponible = 0;
                 stockDisponible = stockNegocio.buscarStock(Id, elemento.Talle);
                 elemento.PrecioUnitario = articulo.Precio;
+             
                 if (stockDisponible < elemento.Cantidad)
                 {
                     Response.Write("<script language=javascript>alert('STOCK INSUFICIENTE. Seleccione una cantidad menor.');</script>");

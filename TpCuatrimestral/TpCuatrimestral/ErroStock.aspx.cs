@@ -4,26 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using negocio;
-using dominio;
 
 namespace TpCuatrimestral
 {
-    public partial class Error : System.Web.UI.Page
+    public partial class ErroStock : System.Web.UI.Page
     {
+        public List<string> lista { get; set; } 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["error"] != null)
                 lblMensaje.Text = Session["error"].ToString();
-            List<string> lista = new List<string>();
 
             if (Session["listaSinStock"] != null)
             {
                 lista = (List<string>)Session["listaSinStock"];
-                foreach(string item in lista)
-                {
-                    lblStock.Text = item;
-                }
+                dgvSinStock.DataSource = lista;
+                dgvSinStock.DataBind();
+                
             }
             Session["listaSinStock"] = null;
         }
